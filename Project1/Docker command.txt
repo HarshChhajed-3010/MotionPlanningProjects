@@ -1,0 +1,2 @@
+docker run -it -v "C:\Users\prana\OneDrive\Desktop\WPI\MotionPlanning\HW1\code:/code/" cchamzas/rbe550-ompl:initial-commit /bin/bash
+to run the prof. chamzas'code

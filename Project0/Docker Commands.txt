@@ -1,0 +1,9 @@
+docker run -it -v "C:\Users\prana\OneDrive\Desktop\WPI\MotionPlanning\HW0\code:/code/" cchamzas/rbe550-ompl:initial-commit /bin/bash
+to run the prof. chamzas'code
+
+for C++
+cmake ../ && make
+./RigidBodyPlanning
+
+For python3
+python3 PlannerData.py

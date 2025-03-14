@@ -1,0 +1,277 @@
+OMPL version 1.6.0
+Experiment ChainBox_ClearanceOptimization
+0 experiment properties
+Running on 1c183af38179
+Starting at 2025-03-04 17:46:19
+<<<|
+Properties of the state space 'CompoundSpace0'
+  - signature: 14 0 7 1 2 2 1 2 1 2 1 2 1 2 1 
+  - dimension: 7
+  - extent: 29.8501
+  - sanity checks for state space passed
+  - probability of valid states: 0.362
+  - average length of a valid motion: 4.10644
+  - average number of samples drawn per second: sampleUniform()=1.32982e+07 sampleUniformNear()=1.24786e+07 sampleGaussian()=6.00265e+06
+Settings for the state space 'CompoundSpace0'
+  - state validity check resolution: 1%
+  - valid segment count factor: 1
+  - state space:
+Compound state space 'CompoundSpace0' of dimension 7 [
+Real vector state space 'RealVectorSpace1' of dimension 2 with bounds: 
+  - min: -5 -5 
+  - max: 5 5 
+ of weight 1
+SO2 state space 'SO2Space2'
+ of weight 1
+SO2 state space 'SO2Space3'
+ of weight 1
+SO2 state space 'SO2Space4'
+ of weight 1
+SO2 state space 'SO2Space5'
+ of weight 1
+SO2 state space 'SO2Space6'
+ of weight 1
+]
+No registered projections
+
+Declared parameters:
+longest_valid_segment_fraction = 0.01
+valid_segment_count_factor = 1
+Valid state sampler named uniform with parameters:
+nr_attempts = 100
+Planner RRTstar specs:
+Multithreaded:                 No
+Reports approximate solutions: Yes
+Can optimize solutions:        Yes
+Aware of the following parameters: delay_collision_checking focus_search goal_bias informed_sampling new_state_rejection number_sampling_attempts ordered_sampling ordering_batch_size prune_threshold pruned_measure range rewire_factor sample_rejection tree_pruning use_admissible_heuristic use_k_nearest
+Declared parameters for planner RRTstar:
+delay_collision_checking = 1
+focus_search = 0
+goal_bias = 0.1
+informed_sampling = 0
+new_state_rejection = 0
+number_sampling_attempts = 100
+ordered_sampling = 0
+ordering_batch_size = 1
+prune_threshold = 0.05
+pruned_measure = 0
+range = 0.5
+rewire_factor = 1.1
+sample_rejection = 0
+tree_pruning = 0
+use_admissible_heuristic = 1
+use_k_nearest = 1
+Start states:
+Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+Goal state, threshold = 2.22045e-16, memory address = 0x563d06ff5b70, state = 
+Compound state [
+RealVectorState [3 3]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+Optimization Objective:  @0x563d0700b2e0
+Optimization Threshold: 0
+Average state cost: 3.39727e-07
+There are 1 solutions
+
+Properties of benchmarked planners:
+Planner PRM*_Clearance specs:
+Multithreaded:                 Yes
+Reports approximate solutions: Yes
+Can optimize solutions:        Yes
+Aware of the following parameters:
+Planner RRT*_Clearance specs:
+Multithreaded:                 No
+Reports approximate solutions: Yes
+Can optimize solutions:        Yes
+Aware of the following parameters: delay_collision_checking focus_search goal_bias informed_sampling new_state_rejection number_sampling_attempts ordered_sampling ordering_batch_size prune_threshold pruned_measure range rewire_factor sample_rejection tree_pruning use_admissible_heuristic use_k_nearest
+|>>>
+<<<|
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        39 bits physical, 48 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               32
+On-line CPU(s) list:                  0-31
+Vendor ID:                            GenuineIntel
+Model name:                           Intel(R) Core(TM) i9-14900HX
+CPU family:                           6
+Model:                                183
+Thread(s) per core:                   2
+Core(s) per socket:                   16
+Socket(s):                            1
+Stepping:                             1
+BogoMIPS:                             4838.40
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves avx_vnni umip waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize flush_l1d arch_capabilities
+Virtualization:                       VT-x
+Hypervisor vendor:                    Microsoft
+Virtualization type:                  full
+L1d cache:                            768 KiB (16 instances)
+L1i cache:                            512 KiB (16 instances)
+L2 cache:                             32 MiB (16 instances)
+L3 cache:                             36 MiB (1 instance)
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Mitigation; Clear Register File
+Vulnerability Retbleed:               Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+|>>>
+10964482411714096 is the random seed
+60 seconds per run
+1024 MB per run
+10 runs per planner
+1.14701 seconds spent to collect the data
+1 enum type
+status|Unknown status|Invalid start|Invalid goal|Unrecognized goal type|Timeout|Approximate solution|Exact solution|Crash|Unknown status|Unknown status
+2 planners
+geometric_PRM*_Clearance
+2 common properties
+longest_valid_segment_fraction = 0.01
+valid_segment_count_factor = 1
+26 properties for each run
+approximate solution BOOLEAN
+best cost REAL
+correct solution BOOLEAN
+correct solution strict BOOLEAN
+edge count INTEGER
+graph motions INTEGER
+graph states INTEGER
+iterations INTEGER
+memory REAL
+milestone count INTEGER
+simplification time REAL
+simplified correct solution BOOLEAN
+simplified correct solution strict BOOLEAN
+simplified solution clearance REAL
+simplified solution length REAL
+simplified solution segments INTEGER
+simplified solution smoothness REAL
+solution clearance REAL
+solution difference REAL
+solution length REAL
+solution segments INTEGER
+solution smoothness REAL
+solved BOOLEAN
+status ENUM
+time REAL
+valid segment fraction REAL
+10 runs
+0; 1.240978; 1; 1; 10; 20; 9; 7; 9.88672; 9; 0.0319674; 1; 1; 0; 24.4599; 2; 0.0360074; 0; 0; 43.1053; 4; 0.0666916; 1; 6; 0.00962023; 0.285714; 
+0; 0.157218; 1; 1; 14; 28; 9; 7; 9.88672; 9; 0.0207709; 1; 1; 0; 21.428; 2; 0.0416573; 0; 0; 33.2071; 3; 0.0477222; 1; 6; 0.0102061; 0.4; 
+0; 2.121320; 1; 1; 5; 10; 5; 3; 9.88672; 5; 0.0183731; 1; 1; 0; 22.5229; 2; 0.0392805; 0; 0; 31.076; 2; 0.0258548; 1; 6; 0.00448941; 0.5; 
+0; 0.015644; 1; 1; 17; 34; 10; 8; 9.88672; 10; 0.0240812; 1; 1; 0; 28.0377; 4; 0.11297; 0; 0; 36.2308; 4; 0.115703; 1; 6; 0.00932838; 0.395349; 
+0; 2.121320; 1; 1; 8; 16; 7; 5; 9.88672; 7; 0.0265094; 1; 1; 0; 25.0899; 5; 0.29831; 0; 0; 37.1524; 3; 0.0467043; 1; 6; 0.0069053; 0.380952; 
+0; 0.605153; 1; 1; 5; 10; 5; 3; 9.88672; 5; 0.00655797; 1; 1; 0; 17.722; 3; 0.0542345; 0; 0; 21.5503; 2; 0.0416953; 1; 6; 0.00468995; 0.5; 
+0; 1.073102; 1; 1; 30; 60; 17; 15; 9.88672; 17; 0.0244277; 1; 1; 0; 26.1676; 2; 0.0329388; 0; 0; 42.6139; 4; 0.0600524; 1; 6; 0.0210541; 0.291262; 
+0; 0.692002; 1; 1; 23; 46; 11; 9; 9.88672; 11; 0.0266875; 1; 1; 0; 26.7657; 3; 0.0662898; 0; 0; 42.0644; 3; 0.0544129; 1; 6; 0.0140615; 0.45098; 
+0; 2.121320; 1; 1; 6; 12; 5; 3; 9.88672; 5; 0.0228739; 1; 1; 0; 22.2204; 2; 0.0400312; 0; 0; 37.1416; 3; 0.0409965; 1; 6; 0.00564491; 0.6; 
+0; 2.121320; 1; 1; 18; 36; 8; 6; 9.88672; 8; 0.00704597; 1; 1; 0; 19.7722; 3; 0.0494253; 0; 0; 26.1929; 2; 0.0332852; 1; 6; 0.0102706; 0.642857; 
+5 progress properties for each run
+best cost REAL
+edge count INTEGER
+iterations INTEGER
+milestone count INTEGER
+time REAL
+10 runs
+
+
+
+
+
+
+
+
+
+
+.
+geometric_RRT*_Clearance
+18 common properties
+delay_collision_checking = 1
+focus_search = 0
+goal_bias = 0.05
+informed_sampling = 0
+longest_valid_segment_fraction = 0.01
+new_state_rejection = 0
+number_sampling_attempts = 100
+ordered_sampling = 0
+ordering_batch_size = 1
+prune_threshold = 0.05
+pruned_measure = 0
+range = 5.97002
+rewire_factor = 1.1
+sample_rejection = 0
+tree_pruning = 0
+use_admissible_heuristic = 1
+use_k_nearest = 1
+valid_segment_count_factor = 1
+24 properties for each run
+approximate solution BOOLEAN
+best cost REAL
+correct solution BOOLEAN
+correct solution strict BOOLEAN
+graph motions INTEGER
+graph states INTEGER
+iterations INTEGER
+memory REAL
+simplification time REAL
+simplified correct solution BOOLEAN
+simplified correct solution strict BOOLEAN
+simplified solution clearance REAL
+simplified solution length REAL
+simplified solution segments INTEGER
+simplified solution smoothness REAL
+solution clearance REAL
+solution difference REAL
+solution length REAL
+solution segments INTEGER
+solution smoothness REAL
+solved BOOLEAN
+status ENUM
+time REAL
+valid segment fraction REAL
+10 runs
+0; 0.305303; 1; 1; 40; 41; 94; 9.88672; 0.0318552; 1; 1; 0; 20.4622; 5; 0.0492572; 0; 0; 32.2231; 6; 0.265081; 1; 6; 0.0339711; 0.42268; 
+0; 0.237407; 1; 1; 56; 57; 163; 9.88672; 0.0270875; 1; 1; 0; 23.4559; 2; 0.0376569; 0; 0; 30.7472; 6; 0.138144; 1; 6; 0.0598074; 0.363095; 
+0; 0.752342; 1; 1; 19; 20; 48; 10.043; 0.0360627; 1; 1; 0; 20.9497; 4; 0.0608992; 0; 0; 40.9987; 7; 0.465797; 1; 6; 0.0133363; 0.408163; 
+0; 0.744183; 1; 1; 47; 48; 136; 10.043; 0.0294557; 1; 1; 0; 23.7041; 4; 0.153436; 0; 0; 35.8106; 6; 0.30697; 1; 6; 0.0445114; 0.359712; 
+0; 0.063132; 1; 1; 8; 9; 31; 10.043; 0.0154132; 1; 1; 0; 16.112; 4; 0.248586; 0; 0; 23.8076; 4; 0.199174; 1; 6; 0.00576387; 0.258065; 
+0; 0.274070; 1; 1; 16; 17; 35; 10.043; 0.0251486; 1; 1; 0; 20.7069; 2; 0.0434439; 0; 0; 31.4123; 6; 0.195704; 1; 6; 0.0101282; 0.457143; 
+0; 0.212332; 1; 1; 61; 62; 190; 10.043; 0.0461579; 1; 1; 0; 30.592; 4; 0.130037; 0; 0; 60.3731; 11; 0.52534; 1; 6; 0.0669187; 0.321053; 
+0; 0.594860; 1; 1; 80; 81; 221; 10.043; 0.0362286; 1; 1; 0; 25.138; 3; 0.0694941; 0; 0; 52.2091; 9; 0.488075; 1; 6; 0.108069; 0.373333; 
+0; 0.006991; 1; 1; 21; 22; 52; 10.043; 0.0319828; 1; 1; 0; 31.7991; 9; 0.543457; 0; 0; 45.2884; 8; 0.233811; 1; 6; 0.0154237; 0.403846; 
+0; 1.048746; 1; 1; 26; 27; 57; 10.043; 0.0284423; 1; 1; 0; 21.3287; 3; 0.0674522; 0; 0; 35.07; 6; 0.410039; 1; 6; 0.020019; 0.465517; 
+3 progress properties for each run
+best cost REAL
+iterations INTEGER
+time REAL
+10 runs
+
+
+
+
+
+
+
+
+
+
+.

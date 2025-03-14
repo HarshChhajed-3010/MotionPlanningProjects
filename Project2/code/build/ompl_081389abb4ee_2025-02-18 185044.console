@@ -1,0 +1,581 @@
+Info:    Beginning benchmark
+Info:    No planner specified. Using default.
+Info:    LBKPIECE1: Attempting to use default projection.
+Debug:   LBKPIECE1: Planner range detected to be 3.973835
+Info:    Preparing for run 0 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 41 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.004921 seconds and changed from 6 to 7 states
+Info:    Preparing for run 1 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 24 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.010507 seconds and changed from 7 to 6 states
+Info:    Preparing for run 2 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 107 states
+Info:    SimpleSetup: Path simplification took 0.008268 seconds and changed from 14 to 6 states
+Info:    Preparing for run 3 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 27 states
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 711 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 740 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Info:    SimpleSetup: Path simplification took 0.013642 seconds and changed from 6 to 6 states
+Info:    Preparing for run 4 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 51 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.007498 seconds and changed from 12 to 6 states
+Info:    Preparing for run 5 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 9 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.016831 seconds and changed from 5 to 5 states
+Info:    Preparing for run 6 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 28 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.008754 seconds and changed from 7 to 9 states
+Info:    Preparing for run 7 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 46 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.016326 seconds and changed from 8 to 8 states
+Info:    Preparing for run 8 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 35 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.006017 seconds and changed from 7 to 7 states
+Info:    Preparing for run 9 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 63 states
+Info:    SimpleSetup: Path simplification took 0.007946 seconds and changed from 9 to 5 states
+Info:    Preparing for run 10 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 42 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.058094 seconds and changed from 9 to 4 states
+Info:    Preparing for run 11 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 34 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.012325 seconds and changed from 9 to 9 states
+Info:    Preparing for run 12 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 49 states
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 711 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 740 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Info:    SimpleSetup: Path simplification took 0.045797 seconds and changed from 8 to 9 states
+Info:    Preparing for run 13 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 51 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.018052 seconds and changed from 9 to 4 states
+Info:    Preparing for run 14 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 74 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.006157 seconds and changed from 10 to 7 states
+Info:    Preparing for run 15 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 66 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.013803 seconds and changed from 11 to 6 states
+Info:    Preparing for run 16 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 124 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.012304 seconds and changed from 11 to 7 states
+Info:    Preparing for run 17 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 42 states
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 711 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 740 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Info:    SimpleSetup: Path simplification took 0.011566 seconds and changed from 4 to 6 states
+Info:    Preparing for run 18 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 32 states
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 711 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 740 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Info:    SimpleSetup: Path simplification took 0.016826 seconds and changed from 5 to 5 states
+Info:    Preparing for run 19 of geometric_STRIDE
+Info:    STRIDE: Starting planning with 1 states already in datastructure
+Info:    STRIDE: Created 37 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.008894 seconds and changed from 6 to 7 states
+Info:    Preparing for run 0 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 19 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.007714 seconds and changed from 6 to 6 states
+Info:    Preparing for run 1 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 13 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.006815 seconds and changed from 6 to 8 states
+Info:    Preparing for run 2 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 9 states
+Info:    SimpleSetup: Path simplification took 0.006244 seconds and changed from 5 to 7 states
+Info:    Preparing for run 3 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 14 states
+Info:    SimpleSetup: Path simplification took 0.006978 seconds and changed from 7 to 6 states
+Info:    Preparing for run 4 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 17 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.007238 seconds and changed from 5 to 7 states
+Info:    Preparing for run 5 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 10 states
+Info:    SimpleSetup: Path simplification took 0.004417 seconds and changed from 5 to 5 states
+Info:    Preparing for run 6 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 4 states
+Info:    SimpleSetup: Path simplification took 0.004370 seconds and changed from 4 to 5 states
+Info:    Preparing for run 7 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 13 states
+Info:    SimpleSetup: Path simplification took 0.009811 seconds and changed from 7 to 6 states
+Info:    Preparing for run 8 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 21 states
+Info:    SimpleSetup: Path simplification took 0.009834 seconds and changed from 5 to 6 states
+Info:    Preparing for run 9 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 5 states
+Info:    SimpleSetup: Path simplification took 0.005060 seconds and changed from 4 to 4 states
+Info:    Preparing for run 10 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 7 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.010987 seconds and changed from 5 to 6 states
+Info:    Preparing for run 11 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 10 states
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 711 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.016599 seconds and changed from 5 to 5 states
+Info:    Preparing for run 12 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 11 states
+Info:    SimpleSetup: Path simplification took 0.004559 seconds and changed from 5 to 6 states
+Info:    Preparing for run 13 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 25 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.010260 seconds and changed from 5 to 9 states
+Info:    Preparing for run 14 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 20 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.005879 seconds and changed from 5 to 5 states
+Info:    Preparing for run 15 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 13 states
+Info:    SimpleSetup: Path simplification took 0.007001 seconds and changed from 5 to 6 states
+Info:    Preparing for run 16 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 13 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.010109 seconds and changed from 6 to 7 states
+Info:    Preparing for run 17 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 13 states
+Info:    SimpleSetup: Path simplification took 0.009304 seconds and changed from 8 to 11 states
+Info:    Preparing for run 18 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 7 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.012184 seconds and changed from 5 to 7 states
+Info:    Preparing for run 19 of geometric_EST
+Info:    EST: Starting planning with 1 states already in datastructure
+Info:    EST: Created 7 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.004530 seconds and changed from 5 to 5 states
+Info:    Preparing for run 0 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 46 states in 44 cells (0 internal + 44 external)
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.009801 seconds and changed from 17 to 6 states
+Info:    Preparing for run 1 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 27 states in 26 cells (0 internal + 26 external)
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.009165 seconds and changed from 16 to 5 states
+Info:    Preparing for run 2 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 27 states in 27 cells (0 internal + 27 external)
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 711 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 740 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Info:    SimpleSetup: Path simplification took 0.011040 seconds and changed from 11 to 4 states
+Info:    Preparing for run 3 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 23 states in 22 cells (0 internal + 22 external)
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.012955 seconds and changed from 11 to 7 states
+Info:    Preparing for run 4 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 26 states in 26 cells (0 internal + 26 external)
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 711 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 740 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Info:    SimpleSetup: Path simplification took 0.013498 seconds and changed from 15 to 6 states
+Info:    Preparing for run 5 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 65 states in 62 cells (0 internal + 62 external)
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.008960 seconds and changed from 30 to 6 states
+Info:    Preparing for run 6 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 51 states in 50 cells (0 internal + 50 external)
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.013892 seconds and changed from 15 to 5 states
+Info:    Preparing for run 7 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 67 states in 62 cells (0 internal + 62 external)
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.013258 seconds and changed from 12 to 5 states
+Info:    Preparing for run 8 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 79 states in 77 cells (0 internal + 77 external)
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.009154 seconds and changed from 14 to 5 states
+Info:    Preparing for run 9 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 43 states in 37 cells (0 internal + 37 external)
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.007454 seconds and changed from 12 to 6 states
+Info:    Preparing for run 10 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 33 states in 29 cells (0 internal + 29 external)
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.016429 seconds and changed from 13 to 7 states
+Info:    Preparing for run 11 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 129 states in 118 cells (0 internal + 118 external)
+Info:    SimpleSetup: Path simplification took 0.008147 seconds and changed from 27 to 4 states
+Info:    Preparing for run 12 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 9 states in 8 cells (0 internal + 8 external)
+Info:    SimpleSetup: Path simplification took 0.005350 seconds and changed from 8 to 7 states
+Info:    Preparing for run 13 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 14 states in 12 cells (0 internal + 12 external)
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.009815 seconds and changed from 8 to 7 states
+Info:    Preparing for run 14 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 28 states in 27 cells (0 internal + 27 external)
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.008164 seconds and changed from 12 to 6 states
+Info:    Preparing for run 15 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 64 states in 57 cells (0 internal + 57 external)
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.008369 seconds and changed from 18 to 4 states
+Info:    Preparing for run 16 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 23 states in 23 cells (0 internal + 23 external)
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.013285 seconds and changed from 10 to 5 states
+Info:    Preparing for run 17 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 51 states in 49 cells (0 internal + 49 external)
+Info:    SimpleSetup: Path simplification took 0.007404 seconds and changed from 18 to 5 states
+Info:    Preparing for run 18 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 25 states in 25 cells (0 internal + 25 external)
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.012643 seconds and changed from 10 to 6 states
+Info:    Preparing for run 19 of geometric_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 89 states in 83 cells (0 internal + 83 external)
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.009548 seconds and changed from 23 to 5 states
+Info:    Preparing for run 0 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 8 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.007637 seconds and changed from 7 to 4 states
+Info:    Preparing for run 1 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 21 states
+Info:    SimpleSetup: Path simplification took 0.006122 seconds and changed from 8 to 8 states
+Info:    Preparing for run 2 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 14 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.006135 seconds and changed from 6 to 6 states
+Info:    Preparing for run 3 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 23 states
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 711 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 740 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Info:    SimpleSetup: Path simplification took 0.007776 seconds and changed from 7 to 7 states
+Info:    Preparing for run 4 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 17 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.004123 seconds and changed from 7 to 7 states
+Info:    Preparing for run 5 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 27 states
+Info:    SimpleSetup: Path simplification took 0.006872 seconds and changed from 8 to 8 states
+Info:    Preparing for run 6 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 12 states
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 711 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Info:    SimpleSetup: Path simplification took 0.008517 seconds and changed from 7 to 6 states
+Info:    Preparing for run 7 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 8 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.007576 seconds and changed from 7 to 7 states
+Info:    Preparing for run 8 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 18 states
+Info:    SimpleSetup: Path simplification took 0.005068 seconds and changed from 7 to 6 states
+Info:    Preparing for run 9 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 10 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.007883 seconds and changed from 8 to 6 states
+Info:    Preparing for run 10 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 8 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.005283 seconds and changed from 6 to 4 states
+Info:    Preparing for run 11 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 33 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.010178 seconds and changed from 9 to 6 states
+Info:    Preparing for run 12 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 7 states
+Info:    SimpleSetup: Path simplification took 0.007854 seconds and changed from 6 to 6 states
+Info:    Preparing for run 13 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 8 states
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 711 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 740 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Info:    SimpleSetup: Path simplification took 0.018832 seconds and changed from 5 to 5 states
+Info:    Preparing for run 14 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 17 states
+Info:    SimpleSetup: Path simplification took 0.005166 seconds and changed from 9 to 7 states
+Info:    Preparing for run 15 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 11 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.006014 seconds and changed from 7 to 5 states
+Info:    Preparing for run 16 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 6 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.008985 seconds and changed from 4 to 6 states
+Info:    Preparing for run 17 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 10 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.004654 seconds and changed from 6 to 5 states
+Info:    Preparing for run 18 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 12 states
+Info:    SimpleSetup: Path simplification took 0.004969 seconds and changed from 5 to 5 states
+Info:    Preparing for run 19 of geometric_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 12 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.006181 seconds and changed from 7 to 6 states
+Info:    Preparing for run 0 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 290 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.008266 seconds and changed from 16 to 8 states
+Info:    Preparing for run 1 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 462 states
+Info:    SimpleSetup: Path simplification took 0.006737 seconds and changed from 10 to 7 states
+Info:    Preparing for run 2 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 153 states
+Info:    SimpleSetup: Path simplification took 0.009618 seconds and changed from 9 to 5 states
+Info:    Preparing for run 3 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 398 states
+Info:    SimpleSetup: Path simplification took 0.009203 seconds and changed from 14 to 5 states
+Info:    Preparing for run 4 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 403 states
+Info:    SimpleSetup: Path simplification took 0.006084 seconds and changed from 10 to 5 states
+Info:    Preparing for run 5 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 57 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.009272 seconds and changed from 7 to 6 states
+Info:    Preparing for run 6 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 421 states
+Info:    SimpleSetup: Path simplification took 0.010130 seconds and changed from 17 to 8 states
+Info:    Preparing for run 7 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 107 states
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 711 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Info:    SimpleSetup: Path simplification took 0.013184 seconds and changed from 9 to 6 states
+Info:    Preparing for run 8 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 218 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.007788 seconds and changed from 11 to 7 states
+Info:    Preparing for run 9 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 231 states
+Info:    SimpleSetup: Path simplification took 0.007201 seconds and changed from 12 to 7 states
+Info:    Preparing for run 10 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 262 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.004971 seconds and changed from 8 to 6 states
+Info:    Preparing for run 11 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 20 states
+Info:    SimpleSetup: Path simplification took 0.004115 seconds and changed from 6 to 6 states
+Info:    Preparing for run 12 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 128 states
+Info:    SimpleSetup: Path simplification took 0.009466 seconds and changed from 9 to 11 states
+Info:    Preparing for run 13 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 13 states
+Info:    SimpleSetup: Path simplification took 0.004498 seconds and changed from 5 to 6 states
+Info:    Preparing for run 14 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 174 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.007110 seconds and changed from 9 to 6 states
+Info:    Preparing for run 15 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 61 states
+Debug:   The solution path was slightly touching on an invalid region of the state space, but it was successfully fixed.
+Info:    SimpleSetup: Path simplification took 0.006578 seconds and changed from 9 to 8 states
+Info:    Preparing for run 16 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 126 states
+Info:    SimpleSetup: Path simplification took 0.007777 seconds and changed from 9 to 10 states
+Info:    Preparing for run 17 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 192 states
+Warning: Solution path may slightly touch on an invalid region of the state space
+         at line 711 in /ompl/src/ompl/geometric/src/PathSimplifier.cpp
+Info:    SimpleSetup: Path simplification took 0.010335 seconds and changed from 6 to 5 states
+Info:    Preparing for run 18 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 93 states
+Info:    SimpleSetup: Path simplification took 0.006691 seconds and changed from 10 to 10 states
+Info:    Preparing for run 19 of geometric_PRM
+Info:    PRM: Starting planning with 2 states already in datastructure
+Info:    PRM: Created 280 states
+Info:    SimpleSetup: Path simplification took 0.006336 seconds and changed from 12 to 10 states
+Info:    Preparing for run 0 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 670550 states
+Info:    SimpleSetup: Path simplification took 0.001589 seconds and changed from 12 to 2 states
+Info:    Preparing for run 1 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 672446 states
+Info:    SimpleSetup: Path simplification took 0.001760 seconds and changed from 14 to 2 states
+Info:    Preparing for run 2 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 649646 states
+Info:    SimpleSetup: Path simplification took 0.001768 seconds and changed from 19 to 2 states
+Info:    Preparing for run 3 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 668160 states
+Info:    SimpleSetup: Path simplification took 0.001593 seconds and changed from 16 to 2 states
+Info:    Preparing for run 4 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 640885 states
+Info:    SimpleSetup: Path simplification took 0.002770 seconds and changed from 15 to 2 states
+Info:    Preparing for run 5 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 644959 states
+Info:    SimpleSetup: Path simplification took 0.001816 seconds and changed from 14 to 2 states
+Info:    Preparing for run 6 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 731390 states
+Info:    SimpleSetup: Path simplification took 0.001885 seconds and changed from 21 to 2 states
+Info:    Preparing for run 7 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 742551 states
+Info:    SimpleSetup: Path simplification took 0.001359 seconds and changed from 17 to 2 states
+Info:    Preparing for run 8 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 722317 states
+Info:    SimpleSetup: Path simplification took 0.001792 seconds and changed from 17 to 2 states
+Info:    Preparing for run 9 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 715126 states
+Info:    SimpleSetup: Path simplification took 0.001432 seconds and changed from 15 to 2 states
+Info:    Preparing for run 10 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 719562 states
+Info:    SimpleSetup: Path simplification took 0.002299 seconds and changed from 24 to 2 states
+Info:    Preparing for run 11 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 714969 states
+Info:    SimpleSetup: Path simplification took 0.001781 seconds and changed from 20 to 2 states
+Info:    Preparing for run 12 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 724882 states
+Info:    SimpleSetup: Path simplification took 0.001581 seconds and changed from 17 to 2 states
+Info:    Preparing for run 13 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 723732 states
+Info:    SimpleSetup: Path simplification took 0.001299 seconds and changed from 13 to 2 states
+Info:    Preparing for run 14 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 718869 states
+Info:    SimpleSetup: Path simplification took 0.001993 seconds and changed from 19 to 2 states
+Info:    Preparing for run 15 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 697317 states
+Info:    SimpleSetup: Path simplification took 0.001828 seconds and changed from 14 to 2 states
+Info:    Preparing for run 16 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 706611 states
+Info:    SimpleSetup: Path simplification took 0.002002 seconds and changed from 17 to 2 states
+Info:    Preparing for run 17 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 699900 states
+Info:    SimpleSetup: Path simplification took 0.002214 seconds and changed from 17 to 2 states
+Info:    Preparing for run 18 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 672780 states
+Info:    SimpleSetup: Path simplification took 0.001535 seconds and changed from 16 to 2 states
+Info:    Preparing for run 19 of geometric_RTP
+Info:    ProblemDefinition: Adding approximate solution from planner RTP
+Info:    RTP: Created 664083 states
+Info:    SimpleSetup: Path simplification took 0.001937 seconds and changed from 16 to 2 states
+Info:    Benchmark complete

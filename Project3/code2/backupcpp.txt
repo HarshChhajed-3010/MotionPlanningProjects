@@ -1,0 +1,355 @@
+#include "KinematicChain.h"
+#include <cmath>
+#include <ompl/base/spaces/SE2StateSpace.h>
+#include <ompl/base/spaces/RealVectorStateSpace.h>
+#include <ompl/base/StateSpace.h>
+#include <ompl/base/StateValidityChecker.h>
+#include <ompl/geometric/SimpleSetup.h>
+#include <ompl/geometric/planners/rrt/RRT.h>
+#include <ompl/geometric/planners/rrt/RRTstar.h>
+#include <ompl/base/objectives/MaximizeMinClearanceObjective.h>
+#include <ompl/geometric/planners/prm/PRM.h>
+#include <ompl/geometric/planners/prm/PRMstar.h>
+#include <ompl/geometric/planners/rrt/RRTConnect.h>
+#include <ompl/tools/benchmark/Benchmark.h>
+#include <fstream>
+
+
+struct Obstacle
+{
+    double x1, y1, x2, y2;
+};
+
+void makeScenario1(Environment &env, std::vector<double> &start, std::vector<double> &goal)
+{
+
+    start.reserve(7);
+    start.assign(7, 0.0);
+
+    goal.reserve(7);
+    goal.assign(7, 0.0);
+
+    start[0] = -3;
+    start[1] = -3;
+    goal[0] = 2 ; 
+    goal[1] = 2 ; 
+    goal[2] = 0; 
+    goal[4] = -0.5*M_PI;
+
+    //Obstacle 1 - making a rectangle, with  4 lines, (2,-1) (2.8,-1) (2.8,0.5) (2,0.5)
+    env.emplace_back(2, -1, 2.8, -1); 
+    env.emplace_back(2.8, -1, 2.8, 0.5);
+    env.emplace_back(2.8, 0.5, 2, 0.5);
+    env.emplace_back(2, 0.5, 2, -1);
+
+    //Obstacle 2 - making a rectangle, with  4 lines, (3.2,-1) (4,-1) (4,0.5) (3.2,0.5)
+    env.emplace_back(3.2, -1, 4, -1);
+    env.emplace_back(4, -1, 4, 0.5);
+    env.emplace_back(4, 0.5, 3.2, 0.5);
+    env.emplace_back(3.2, 0.5, 3.2, -1);
+
+}
+
+void makeScenario2(Environment &env, std::vector<double> &start, std::vector<double> &goal)
+{
+    start.reserve(7);
+    start.assign(7, 0.0);
+
+    goal.reserve(7);
+    goal.assign(7, 0.0);
+
+    start[0] = -4;
+    start[1] = -4;
+    start[2] = 0;
+    goal[0] = 3; 
+    goal[1] = 3; 
+    goal[2] = 0; 
+
+    //Obstacle 1 - making a rectangle, with  4 lines, (-1,-1) (1,-1) (1,1) (-1,1)
+    env.emplace_back(-1, -1, 1, -1);
+    env.emplace_back(1, -1, 1, 1);
+    env.emplace_back(1, 1, -1, 1);
+    env.emplace_back(-1, 1, -1, -1);
+}
+
+void planScenario1(ompl::geometric::SimpleSetup &ss)
+{
+    // Create a planner instance using RRT (Rapidly-exploring Random Tree)
+    auto planner = std::make_shared<ompl::geometric::RRT>(ss.getSpaceInformation());
+    planner->setRange(0.1); // Set the maximum distance the planner can extend in the tree
+    ss.setPlanner(planner);
+
+    // Setup the planner
+    ss.setup();
+
+    // Attempt to solve the planning problem until a solution is found or the user terminates the program
+    ompl::base::PlannerStatus solved = ss.solve(ompl::base::plannerNonTerminatingCondition());
+
+    // Check if a solution was found
+    if (solved)
+    {
+        // Open a file to save the solution path
+        std::ofstream pathFile("path1.txt");
+
+        // Simplify the solution path
+        ss.simplifySolution();
+
+        // Print the solution path to the file in matrix format
+        ss.getSolutionPath().printAsMatrix(pathFile);
+
+        // Close the file
+        pathFile.close();
+
+        // Inform the user that a solution was found and saved
+        std::cout << "Found solution and saved to path1.txt" << std::endl;
+    }
+    else
+    {
+        // Inform the user that no solution was found
+        std::cout << "No solution found" << std::endl;
+    }
+}
+
+void benchScenario1(ompl::geometric::SimpleSetup &ss)
+{
+    // Benchmark PRM with uniform, bridge, gaussian, and obstacle-based sampling.
+    // Run 20 trials with a 20-second timeout per trial.
+    double runtime_limit = 20, memory_limit = 1024;
+    int run_count = 20;
+    ompl::tools::Benchmark::Request request(runtime_limit, memory_limit, run_count, 0.5);
+    ompl::tools::Benchmark b(ss, "ChainBox_Narrow");
+
+    // Get space information
+    auto si = ss.getSpaceInformation();
+
+    //  PRM with Uniform Sampling (default)
+    auto prm_uniform = std::make_shared<ompl::geometric::PRM>(si);
+    prm_uniform->setProblemDefinition(ss.getProblemDefinition());
+    b.addPlanner(prm_uniform); // Add PRM with uniform sampling
+
+    //  PRM with Bridge Sampling
+    auto prm_bridge = std::make_shared<ompl::geometric::PRM>(si);
+    prm_bridge->setProblemDefinition(ss.getProblemDefinition());
+    b.addPlanner(prm_bridge); // Add PRM with bridge sampling
+
+    // PRM with Gaussian Sampling
+    auto prm_gaussian = std::make_shared<ompl::geometric::PRM>(si);
+    prm_gaussian->setProblemDefinition(ss.getProblemDefinition());
+    b.addPlanner(prm_gaussian); // Add PRM with Gaussian sampling
+
+    // PRM with Obstacle-based Sampling
+    auto prm_obstacle = std::make_shared<ompl::geometric::PRM>(si);
+    prm_obstacle->setProblemDefinition(ss.getProblemDefinition());
+    b.addPlanner(prm_obstacle); // Add PRM with obstacle-based sampling
+
+    // Run the benchmark with specified request parameters
+    b.benchmark(request);
+
+    // Save results to a log file
+    b.saveResultsToFile("benchmark1.log");
+
+    std::cout << "Benchmarking for Scenario 1 completed. Results saved in benchmark1.log." << std::endl;
+}
+
+void planScenario2(ompl::geometric::SimpleSetup &ss)
+{
+    // Replace path length objective with MaximizeMinClearanceObjective
+    auto ClrObjective = std::make_shared<ompl::base::MaximizeMinClearanceObjective>(ss.getSpaceInformation());
+
+    // Set a minimum acceptable clearance
+    double minClearanceThreshold = 1.0; // Adjust this value as needed
+    ClrObjective->setCostThreshold(ompl::base::Cost(minClearanceThreshold));
+
+    ss.setOptimizationObjective(ClrObjective);
+
+    // Use RRT* as the planner
+    auto planner = std::make_shared<ompl::geometric::RRTstar>(ss.getSpaceInformation());
+    planner->setRange(0.5);  // Limits max step size
+
+    // Increase goal bias to improve convergence
+    planner->setGoalBias(0.1); // Default is usually 0.05
+
+    ss.setPlanner(planner);
+
+    if (ss.solve(100.0)) {
+        std::ofstream pathFile("path_c.txt");
+        ss.getSolutionPath().printAsMatrix(pathFile);
+        pathFile.close();
+        ss.getSolutionPath().print(std::cout);
+        std::cout << "Solution found and saved to path_c.txt.\n";
+    } else {
+        std::cout << "No solution found.\n";
+    }
+}
+
+void benchScenario2(ompl::geometric::SimpleSetup &ss)
+{
+    // Benchmark RRT*, PRM*, RRT# for 10 trials with 60 seconds timeout.
+    double runtime_limit = 60, memory_limit = 1024;
+    int run_count = 10;
+    ompl::tools::Benchmark::Request request(runtime_limit, memory_limit, run_count, 0.5);
+    ompl::tools::Benchmark b(ss, "ChainBox_Clearance");
+
+    // Add RRT*
+    auto si = ss.getSpaceInformation();
+    auto rrtstar = std::make_shared<ompl::geometric::RRTstar>(si);
+    rrtstar->setProblemDefinition(ss.getProblemDefinition());
+    b.addPlanner(rrtstar);
+
+    // Add PRM*
+    auto prmstar = std::make_shared<ompl::geometric::PRMstar>(si);
+    prmstar->setProblemDefinition(ss.getProblemDefinition());
+    b.addPlanner(prmstar);
+
+    // Add RRT#
+    auto rrtconnect = std::make_shared<ompl::geometric::RRTConnect>(si);
+    rrtconnect->setProblemDefinition(ss.getProblemDefinition());
+    b.addPlanner(rrtconnect);
+    // Run the benchmark
+    b.benchmark(request);
+
+    // Save the results
+    b.saveResultsToFile("benchmark2.log");
+}
+
+
+
+std::shared_ptr<ompl::base::CompoundStateSpace> createChainBoxSpace()
+{
+    // Create a compound state space
+    auto space = std::make_shared<ompl::base::CompoundStateSpace>();
+
+    // Add a 2D position space (x, y)
+    auto positionSpace = std::make_shared<ompl::base::RealVectorStateSpace>(2);
+    ompl::base::RealVectorBounds positionBounds(2);
+    positionBounds.setLow(-5);
+    positionBounds.setHigh(5);
+    positionSpace->setBounds(positionBounds);
+    space->addSubspace(positionSpace, 1.0);
+
+    // Add a 1D orientation space (theta)
+    auto orientationSpace = std::make_shared<ompl::base::SO2StateManifold>();
+
+    space->addSubspace(orientationSpace, 1.0);
+
+    // Add additional dimensions if needed (e.g., for a robotic arm with multiple joints)
+    for (int i = 0; i < 4; ++i)
+    {
+        auto jointSpace = std::make_shared<ompl::base::RealVectorStateSpace>(1);
+        ompl::base::RealVectorBounds jointBounds(1);
+        jointBounds.setLow(-M_PI);
+        jointBounds.setHigh(M_PI);
+        jointSpace->setBounds(jointBounds);
+        space->addSubspace(jointSpace, 1.0);
+    }
+
+    // Lock the state space
+    space->lock();
+
+    return space;
+}
+bool isStateInCollision(const ompl::base::RealVectorStateSpace::StateType *pos, const Obstacle &obstacle);
+
+void setupCollisionChecker(ompl::geometric::SimpleSetup &ss, Environment &env)
+{
+    auto space = ss.getStateSpace(); 
+    auto si = ss.getSpaceInformation();
+
+    // Define a state validity checker
+    ss.setStateValidityChecker([si, &env](const ompl::base::State *state) -> bool {
+        const auto *compoundState = state->as<ompl::base::CompoundState>(); // typeCast the state to a compound state
+        const auto *pos = compoundState->as<ompl::base::RealVectorStateSpace::StateType>(0);
+
+        // Check for collision with each obstacle
+        for (const auto &obstacle : env)
+        {
+            if (isStateInCollision(pos, obstacle))
+            {
+                return false; // State is in collision
+            }
+        }
+        return true; // State is valid
+    });
+
+    // Set the resolution for state validity checking
+    ss.getSpaceInformation()->setStateValidityCheckingResolution(0.01); // 1% of the space extent
+}
+
+bool isStateInCollision(const ompl::base::RealVectorStateSpace::StateType *pos, const Obstacle &obstacle)
+{
+    // Extract the position coordinates
+    double x = pos->values[0];
+    double y = pos->values[1];
+
+    // Check if the point (x, y) is within the bounds of the obstacle
+    double x1 = obstacle.x1;
+    double y1 = obstacle.y1;
+    double x2 = obstacle.x2;
+    double y2 = obstacle.y2;
+
+    // Check if the point is within the rectangle defined by the obstacle
+    if (x >= std::min(x1, x2) && x <= std::max(x1, x2) &&
+        y >= std::min(y1, y2) && y <= std::max(y1, y2))
+    {
+        return true; // State is in collision
+    }
+
+    return false; // No collision
+}
+
+    
+int main(int argc, char **argv)
+{
+
+    int scenario; 
+    Environment env;
+    std::vector<double> startVec;
+    std::vector<double> goalVec;
+    do
+    {
+        std::cout << "Plan for: " << std::endl;
+        std::cout << " (1) Robot Reaching Task" << std::endl;
+        std::cout << " (2) Robot Avoiding Task" << std::endl;
+
+        std::cin >> scenario;
+    } while (scenario < 1 || scenario > 3);
+
+    switch (scenario)
+    {
+        case 1:
+            makeScenario1(env, startVec, goalVec);
+            break;
+        case 2:
+            makeScenario2(env, startVec, goalVec);
+            break;
+        default:
+            std::cerr << "Invalid Scenario Number!" << std::endl;
+    }
+
+    auto space = createChainBoxSpace();
+    ompl::geometric::SimpleSetup ss(space);
+
+    setupCollisionChecker(ss, env);
+
+    //setup Start and Goal
+    ompl::base::ScopedState<> start(space), goal(space);
+    space->setup();
+    space->copyFromReals(start.get(), startVec);
+    space->copyFromReals(goal.get(), goalVec);
+    ss.setStartAndGoalStates(start, goal);
+
+    switch (scenario)
+    {
+        case 1:
+            planScenario1(ss);
+            benchScenario1(ss);
+            break;
+        case 2:
+            planScenario2(ss);
+            benchScenario2(ss);
+            break;
+        default:
+            std::cerr << "Invalid Scenario Number!" << std::endl;
+    }
+
+}

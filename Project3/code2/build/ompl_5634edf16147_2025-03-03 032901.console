@@ -1,0 +1,42 @@
+Info:    Beginning benchmark
+Info:    Preparing for run 0 of geometric_PRMstar
+Info:    PRMstar: Starting planning with 2 states already in datastructure
+Info:    PRMstar: Created 50909 states
+Info:    SimpleSetup: Path simplification took 0.000003 seconds and changed from 2 to 2 states
+Info:    Preparing for run 1 of geometric_PRMstar
+Info:    PRMstar: Starting planning with 2 states already in datastructure
+Info:    PRMstar: Created 50516 states
+Info:    SimpleSetup: Path simplification took 0.000001 seconds and changed from 2 to 2 states
+Info:    Preparing for run 2 of geometric_PRMstar
+Info:    PRMstar: Starting planning with 2 states already in datastructure
+Info:    PRMstar: Created 51033 states
+Info:    SimpleSetup: Path simplification took 0.000001 seconds and changed from 2 to 2 states
+Info:    Preparing for run 3 of geometric_PRMstar
+Info:    PRMstar: Starting planning with 2 states already in datastructure
+Info:    PRMstar: Created 50886 states
+Info:    SimpleSetup: Path simplification took 0.000001 seconds and changed from 2 to 2 states
+Info:    Preparing for run 4 of geometric_PRMstar
+Info:    PRMstar: Starting planning with 2 states already in datastructure
+Info:    PRMstar: Created 50802 states
+Info:    SimpleSetup: Path simplification took 0.000001 seconds and changed from 2 to 2 states
+Info:    Preparing for run 5 of geometric_PRMstar
+Info:    PRMstar: Starting planning with 2 states already in datastructure
+Info:    PRMstar: Created 50843 states
+Info:    SimpleSetup: Path simplification took 0.000001 seconds and changed from 2 to 2 states
+Info:    Preparing for run 6 of geometric_PRMstar
+Info:    PRMstar: Starting planning with 2 states already in datastructure
+Info:    PRMstar: Created 50203 states
+Info:    SimpleSetup: Path simplification took 0.000001 seconds and changed from 2 to 2 states
+Info:    Preparing for run 7 of geometric_PRMstar
+Info:    PRMstar: Starting planning with 2 states already in datastructure
+Info:    PRMstar: Created 50896 states
+Info:    SimpleSetup: Path simplification took 0.000001 seconds and changed from 2 to 2 states
+Info:    Preparing for run 8 of geometric_PRMstar
+Info:    PRMstar: Starting planning with 2 states already in datastructure
+Info:    PRMstar: Created 50971 states
+Info:    SimpleSetup: Path simplification took 0.000001 seconds and changed from 2 to 2 states
+Info:    Preparing for run 9 of geometric_PRMstar
+Info:    PRMstar: Starting planning with 2 states already in datastructure
+Info:    PRMstar: Created 50974 states
+Info:    SimpleSetup: Path simplification took 0.000001 seconds and changed from 2 to 2 states
+Info:    Benchmark complete

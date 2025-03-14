@@ -1,0 +1,16 @@
+Info:    Beginning benchmark
+Info:    Preparing for run 0 of geometric_RRT_connect
+Info:    RRT_connect: Starting planning with 1 states already in datastructure
+Warning: RRT_connect: Skipping invalid goal state (invalid state)
+         at line 311 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT_connect: Discarded goal state:
+Compound state [
+RealVectorState [2 2]
+SO2State [0]
+SO2State [0]
+SO2State [-1.5708]
+SO2State [0]
+SO2State [0]
+]
+
+Debug:   RRT_connect: Waiting for goal region samples ...

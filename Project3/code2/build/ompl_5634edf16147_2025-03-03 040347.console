@@ -1,0 +1,142 @@
+Info:    Beginning benchmark
+Info:    Preparing for run 0 of geometric_PRMstar
+Warning: PRMstar: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRMstar: Discarded start state Compound state [
+RealVectorState [-3 -3]
+SO2State [0]
+SO2State [0]
+SO2State [-1.5708]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRMstar: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 1 of geometric_PRMstar
+Warning: PRMstar: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRMstar: Discarded start state Compound state [
+RealVectorState [-3 -3]
+SO2State [0]
+SO2State [0]
+SO2State [-1.5708]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRMstar: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 2 of geometric_PRMstar
+Warning: PRMstar: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRMstar: Discarded start state Compound state [
+RealVectorState [-3 -3]
+SO2State [0]
+SO2State [0]
+SO2State [-1.5708]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRMstar: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 3 of geometric_PRMstar
+Warning: PRMstar: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRMstar: Discarded start state Compound state [
+RealVectorState [-3 -3]
+SO2State [0]
+SO2State [0]
+SO2State [-1.5708]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRMstar: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 4 of geometric_PRMstar
+Warning: PRMstar: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRMstar: Discarded start state Compound state [
+RealVectorState [-3 -3]
+SO2State [0]
+SO2State [0]
+SO2State [-1.5708]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRMstar: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 5 of geometric_PRMstar
+Warning: PRMstar: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRMstar: Discarded start state Compound state [
+RealVectorState [-3 -3]
+SO2State [0]
+SO2State [0]
+SO2State [-1.5708]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRMstar: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 6 of geometric_PRMstar
+Warning: PRMstar: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRMstar: Discarded start state Compound state [
+RealVectorState [-3 -3]
+SO2State [0]
+SO2State [0]
+SO2State [-1.5708]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRMstar: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 7 of geometric_PRMstar
+Warning: PRMstar: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRMstar: Discarded start state Compound state [
+RealVectorState [-3 -3]
+SO2State [0]
+SO2State [0]
+SO2State [-1.5708]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRMstar: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 8 of geometric_PRMstar
+Warning: PRMstar: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRMstar: Discarded start state Compound state [
+RealVectorState [-3 -3]
+SO2State [0]
+SO2State [0]
+SO2State [-1.5708]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRMstar: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 9 of geometric_PRMstar
+Warning: PRMstar: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRMstar: Discarded start state Compound state [
+RealVectorState [-3 -3]
+SO2State [0]
+SO2State [0]
+SO2State [-1.5708]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRMstar: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Benchmark complete

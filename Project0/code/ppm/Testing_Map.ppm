@@ -1,0 +1,24 @@
+import numpy as np
+
+# Parameters
+width, height = 1000, 1000
+max_color_value = 255
+
+# Create an empty image (white background)
+image = np.full((height, width, 3), [255, 255, 255], dtype=np.uint8)
+
+# Add a red rectangle (obstacle) in the middle
+image[450:550, 450:550] = [255, 0, 0]
+
+# Add a green start point
+image[50, 50] = [0, 255, 0]
+
+# Add a blue goal point
+image[950, 950] = [0, 0, 255]
+
+# Write to a P6 PPM file
+with open("environment.ppm", "wb") as f:
+    # Write the header
+    f.write(f"P6\n{width} {height}\n{max_color_value}\n".encode())
+    # Write the pixel data
+    f.write(image.tobytes())

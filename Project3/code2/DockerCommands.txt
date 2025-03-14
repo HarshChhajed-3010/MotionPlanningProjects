@@ -1,0 +1,9 @@
+docker run -it -v "C:\Users\prana\OneDrive\Desktop\WPI\MotionPlanning\HW3\code:/code/" cchamzas/rbe550-ompl:initial-commit /bin/bash
+docker commands 
+
+python3 /code/visualise.py --obstacle "/code/build/obstacles.txt" --path "/code/build/path.txt" 
+
+
+parsing data to database 
+/usr/local/bin/ompl_benchmark_statistics.py kinematic_10.log -d kinematic_10.db
+

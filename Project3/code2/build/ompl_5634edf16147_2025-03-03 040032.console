@@ -1,0 +1,7 @@
+Info:    Beginning benchmark
+Info:    Preparing for run 0 of geometric_PRMstar
+Info:    PRMstar: Starting planning with 2 states already in datastructure
+Info:    PRMstar: Created 40134 states
+Info:    SimpleSetup: Path simplification took 0.000003 seconds and changed from 2 to 2 states
+Info:    Preparing for run 1 of geometric_PRMstar
+Info:    PRMstar: Starting planning with 2 states already in datastructure

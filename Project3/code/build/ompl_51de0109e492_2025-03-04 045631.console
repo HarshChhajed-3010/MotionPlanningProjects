@@ -1,0 +1,422 @@
+Info:    Beginning benchmark
+Info:    Preparing for run 0 of geometric_RRT*
+Warning: RRT*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT*: There are no valid initial states!
+         at line 193 in /ompl/src/ompl/geometric/planners/rrt/src/RRTstar.cpp
+Info:    Preparing for run 1 of geometric_RRT*
+Warning: RRT*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT*: There are no valid initial states!
+         at line 193 in /ompl/src/ompl/geometric/planners/rrt/src/RRTstar.cpp
+Info:    Preparing for run 2 of geometric_RRT*
+Warning: RRT*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT*: There are no valid initial states!
+         at line 193 in /ompl/src/ompl/geometric/planners/rrt/src/RRTstar.cpp
+Info:    Preparing for run 3 of geometric_RRT*
+Warning: RRT*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT*: There are no valid initial states!
+         at line 193 in /ompl/src/ompl/geometric/planners/rrt/src/RRTstar.cpp
+Info:    Preparing for run 4 of geometric_RRT*
+Warning: RRT*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT*: There are no valid initial states!
+         at line 193 in /ompl/src/ompl/geometric/planners/rrt/src/RRTstar.cpp
+Info:    Preparing for run 5 of geometric_RRT*
+Warning: RRT*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT*: There are no valid initial states!
+         at line 193 in /ompl/src/ompl/geometric/planners/rrt/src/RRTstar.cpp
+Info:    Preparing for run 6 of geometric_RRT*
+Warning: RRT*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT*: There are no valid initial states!
+         at line 193 in /ompl/src/ompl/geometric/planners/rrt/src/RRTstar.cpp
+Info:    Preparing for run 7 of geometric_RRT*
+Warning: RRT*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT*: There are no valid initial states!
+         at line 193 in /ompl/src/ompl/geometric/planners/rrt/src/RRTstar.cpp
+Info:    Preparing for run 8 of geometric_RRT*
+Warning: RRT*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT*: There are no valid initial states!
+         at line 193 in /ompl/src/ompl/geometric/planners/rrt/src/RRTstar.cpp
+Info:    Preparing for run 9 of geometric_RRT*
+Warning: RRT*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT*: There are no valid initial states!
+         at line 193 in /ompl/src/ompl/geometric/planners/rrt/src/RRTstar.cpp
+Info:    Preparing for run 0 of geometric_PRM*
+Warning: PRM*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRM*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRM*: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 1 of geometric_PRM*
+Warning: PRM*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRM*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRM*: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 2 of geometric_PRM*
+Warning: PRM*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRM*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRM*: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 3 of geometric_PRM*
+Warning: PRM*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRM*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRM*: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 4 of geometric_PRM*
+Warning: PRM*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRM*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRM*: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 5 of geometric_PRM*
+Warning: PRM*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRM*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRM*: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 6 of geometric_PRM*
+Warning: PRM*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRM*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRM*: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 7 of geometric_PRM*
+Warning: PRM*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRM*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRM*: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 8 of geometric_PRM*
+Warning: PRM*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRM*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRM*: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 9 of geometric_PRM*
+Warning: PRM*: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   PRM*: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   PRM*: There are no valid initial states!
+         at line 463 in /ompl/src/ompl/geometric/planners/prm/src/PRM.cpp
+Info:    Preparing for run 0 of geometric_RRT#
+Warning: RRT#: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT#: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT#: There are no valid initial states!
+         at line 179 in /ompl/src/ompl/geometric/planners/rrt/src/RRTXstatic.cpp
+Info:    Preparing for run 1 of geometric_RRT#
+Warning: RRT#: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT#: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT#: There are no valid initial states!
+         at line 179 in /ompl/src/ompl/geometric/planners/rrt/src/RRTXstatic.cpp
+Info:    Preparing for run 2 of geometric_RRT#
+Warning: RRT#: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT#: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT#: There are no valid initial states!
+         at line 179 in /ompl/src/ompl/geometric/planners/rrt/src/RRTXstatic.cpp
+Info:    Preparing for run 3 of geometric_RRT#
+Warning: RRT#: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT#: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT#: There are no valid initial states!
+         at line 179 in /ompl/src/ompl/geometric/planners/rrt/src/RRTXstatic.cpp
+Info:    Preparing for run 4 of geometric_RRT#
+Warning: RRT#: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT#: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT#: There are no valid initial states!
+         at line 179 in /ompl/src/ompl/geometric/planners/rrt/src/RRTXstatic.cpp
+Info:    Preparing for run 5 of geometric_RRT#
+Warning: RRT#: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT#: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT#: There are no valid initial states!
+         at line 179 in /ompl/src/ompl/geometric/planners/rrt/src/RRTXstatic.cpp
+Info:    Preparing for run 6 of geometric_RRT#
+Warning: RRT#: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT#: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT#: There are no valid initial states!
+         at line 179 in /ompl/src/ompl/geometric/planners/rrt/src/RRTXstatic.cpp
+Info:    Preparing for run 7 of geometric_RRT#
+Warning: RRT#: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT#: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT#: There are no valid initial states!
+         at line 179 in /ompl/src/ompl/geometric/planners/rrt/src/RRTXstatic.cpp
+Info:    Preparing for run 8 of geometric_RRT#
+Warning: RRT#: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT#: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT#: There are no valid initial states!
+         at line 179 in /ompl/src/ompl/geometric/planners/rrt/src/RRTXstatic.cpp
+Info:    Preparing for run 9 of geometric_RRT#
+Warning: RRT#: Skipping invalid start state (invalid state)
+         at line 248 in /ompl/src/ompl/base/src/Planner.cpp
+Debug:   RRT#: Discarded start state Compound state [
+RealVectorState [-4 -4]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+SO2State [0]
+]
+
+Error:   RRT#: There are no valid initial states!
+         at line 179 in /ompl/src/ompl/geometric/planners/rrt/src/RRTXstatic.cpp
+Info:    Benchmark complete

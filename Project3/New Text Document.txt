@@ -1,0 +1,6 @@
+docker run -it -v "C:\Users\prana\OneDrive\Desktop\WPI\MotionPlanning\HW3\code:/code/" cchamzas/rbe550-ompl:initial-commit /bin/bash
+
+
+/usr/local/bin/ompl_benchmark_statistics.py benchmarkScenario1.log -d B1S.db
+
+/usr/local/bin/ompl_benchmark_statistics.py benchmarkScenario2.log -d B2S.db

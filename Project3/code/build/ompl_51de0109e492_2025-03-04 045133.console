@@ -1,0 +1,22 @@
+Info:    Beginning benchmark
+Info:    Preparing for run 0 of geometric_RRT*
+Info:    RRT*: Started planning with 1 states. Seeking a solution better than 2.50000.
+Info:    RRT*: Initial k-nearest value of 607
+Info:    RRT*: Found an initial solution with a cost of 2.73 in 91 iterations (32 vertices in the graph)
+Info:    RRT*: Created 31 new states. Checked 496 rewire options. 1 goal states in tree. Final solution cost 2.725
+Info:    SimpleSetup: Path simplification took 0.016360 seconds and changed from 10 to 4 states
+Info:    Preparing for run 1 of geometric_RRT*
+Info:    RRT*: Started planning with 1 states. Seeking a solution better than 2.50000.
+Info:    RRT*: Initial k-nearest value of 607
+Info:    RRT*: Found an initial solution with a cost of 3.21 in 76 iterations (37 vertices in the graph)
+Info:    RRT*: Created 36 new states. Checked 666 rewire options. 1 goal states in tree. Final solution cost 3.212
+Info:    SimpleSetup: Path simplification took 0.022184 seconds and changed from 12 to 3 states
+Info:    Preparing for run 2 of geometric_RRT*
+Info:    RRT*: Started planning with 1 states. Seeking a solution better than 2.50000.
+Info:    RRT*: Initial k-nearest value of 607
+Info:    RRT*: Found an initial solution with a cost of 2.70 in 52 iterations (26 vertices in the graph)
+Info:    RRT*: Created 25 new states. Checked 325 rewire options. 1 goal states in tree. Final solution cost 2.700
+Info:    SimpleSetup: Path simplification took 0.014353 seconds and changed from 8 to 4 states
+Info:    Preparing for run 3 of geometric_RRT*
+Info:    RRT*: Started planning with 1 states. Seeking a solution better than 2.50000.
+Info:    RRT*: Initial k-nearest value of 607

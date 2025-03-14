@@ -1,0 +1,178 @@
+OMPL version 1.6.0
+Experiment ChainBox_Narrow
+0 experiment properties
+Running on e1cd102b5cd2
+Starting at 2025-03-03 18:45:48
+<<<|
+Properties of the state space 'CompoundSpace0'
+  - signature: 14 0 7 1 2 2 1 1 1 1 1 1 1 1 1 
+  - dimension: 7
+  - extent: 42.4165
+  - sanity checks for state space passed
+  - probability of valid states: 0.071
+  - average length of a valid motion: 0.924638
+  - average number of samples drawn per second: sampleUniform()=3.87453e+06 sampleUniformNear()=1.28128e+07 sampleGaussian()=6.75438e+06
+Settings for the state space 'CompoundSpace0'
+  - state validity check resolution: 1%
+  - valid segment count factor: 1
+  - state space:
+Compound state space 'CompoundSpace0' of dimension 7 (locked) [
+Real vector state space 'RealVectorSpace1' of dimension 2 with bounds: 
+  - min: -5 -5 
+  - max: 5 5 
+ of weight 1
+SO2 state space 'SO2Space2'
+ of weight 1
+Real vector state space 'RealVectorSpace3' of dimension 1 with bounds: 
+  - min: -3.14159 
+  - max: 3.14159 
+ of weight 1
+Real vector state space 'RealVectorSpace4' of dimension 1 with bounds: 
+  - min: -3.14159 
+  - max: 3.14159 
+ of weight 1
+Real vector state space 'RealVectorSpace5' of dimension 1 with bounds: 
+  - min: -3.14159 
+  - max: 3.14159 
+ of weight 1
+Real vector state space 'RealVectorSpace6' of dimension 1 with bounds: 
+  - min: -3.14159 
+  - max: 3.14159 
+ of weight 1
+]
+No registered projections
+
+Declared parameters:
+longest_valid_segment_fraction = 0.01
+valid_segment_count_factor = 1
+Valid state sampler named uniform with parameters:
+nr_attempts = 100
+Planner RRT specs:
+Multithreaded:                 No
+Reports approximate solutions: Yes
+Can optimize solutions:        No
+Aware of the following parameters: goal_bias intermediate_states range
+Declared parameters for planner RRT:
+goal_bias = 0.05
+intermediate_states = 0
+range = 0.1
+Start states:
+Compound state [
+RealVectorState [-3 -3]
+SO2State [0]
+RealVectorState [0]
+RealVectorState [0]
+RealVectorState [0]
+RealVectorState [0]
+]
+Goal state, threshold = 2.22045e-16, memory address = 0x55d0b0d1ef60, state = 
+Compound state [
+RealVectorState [2 2]
+SO2State [0]
+RealVectorState [0]
+RealVectorState [0]
+RealVectorState [0]
+RealVectorState [-1.5708]
+]
+OptimizationObjective = nullptr
+There are 0 solutions
+
+Properties of benchmarked planners:
+Planner PRMstar specs:
+Multithreaded:                 Yes
+Reports approximate solutions: Yes
+Can optimize solutions:        Yes
+Aware of the following parameters:
+|>>>
+<<<|
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        39 bits physical, 48 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               32
+On-line CPU(s) list:                  0-31
+Vendor ID:                            GenuineIntel
+Model name:                           Intel(R) Core(TM) i9-14900HX
+CPU family:                           6
+Model:                                183
+Thread(s) per core:                   2
+Core(s) per socket:                   16
+Socket(s):                            1
+Stepping:                             1
+BogoMIPS:                             4838.40
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves avx_vnni umip waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize flush_l1d arch_capabilities
+Virtualization:                       VT-x
+Hypervisor vendor:                    Microsoft
+Virtualization type:                  full
+L1d cache:                            768 KiB (16 instances)
+L1i cache:                            512 KiB (16 instances)
+L2 cache:                             32 MiB (16 instances)
+L3 cache:                             36 MiB (1 instance)
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Mitigation; Clear Register File
+Vulnerability Retbleed:               Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+|>>>
+10964399585285146 is the random seed
+20 seconds per run
+1024 MB per run
+10 runs per planner
+0.0715174 seconds spent to collect the data
+1 enum type
+status|Unknown status|Invalid start|Invalid goal|Unrecognized goal type|Timeout|Approximate solution|Exact solution|Crash|Unknown status|Unknown status
+1 planners
+geometric_PRMstar
+2 common properties
+longest_valid_segment_fraction = 0.01
+valid_segment_count_factor = 1
+11 properties for each run
+best cost REAL
+edge count INTEGER
+graph motions INTEGER
+graph states INTEGER
+iterations INTEGER
+memory REAL
+milestone count INTEGER
+solved BOOLEAN
+status ENUM
+time REAL
+valid segment fraction REAL
+10 runs
+nan; 0; 0; 0; 0; 9.20703; 0; 0; 1; 0.00179915; 0; 
+nan; 0; 0; 0; 0; 9.20703; 0; 0; 1; 0.0012328; 0; 
+nan; 0; 0; 0; 0; 9.20703; 0; 0; 1; 0.00126297; 0; 
+nan; 0; 0; 0; 0; 9.20703; 0; 0; 1; 0.00127663; 0; 
+nan; 0; 0; 0; 0; 9.20703; 0; 0; 1; 0.00129086; 0; 
+nan; 0; 0; 0; 0; 9.20703; 0; 0; 1; 0.00126465; 0; 
+nan; 0; 0; 0; 0; 9.20703; 0; 0; 1; 0.00135762; 0; 
+nan; 0; 0; 0; 0; 9.20703; 0; 0; 1; 0.00149232; 0; 
+nan; 0; 0; 0; 0; 9.20703; 0; 0; 1; 0.00124499; 0; 
+nan; 0; 0; 0; 0; 9.20703; 0; 0; 1; 0.00129118; 0; 
+5 progress properties for each run
+best cost REAL
+edge count INTEGER
+iterations INTEGER
+milestone count INTEGER
+time REAL
+10 runs
+
+
+
+
+
+
+
+
+
+
+.
