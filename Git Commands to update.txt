@@ -1,3 +1,5 @@
+cd Onedrive, Dekstop, WPI, MotionPlanning
+
 git add .
 git commit -m "update message"
 git push -u origin main
