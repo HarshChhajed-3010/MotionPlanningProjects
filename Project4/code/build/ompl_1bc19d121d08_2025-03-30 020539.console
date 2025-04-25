@@ -1,0 +1,372 @@
+Info:    Beginning benchmark
+Info:    Preparing for run 0 of control_RRT_Vanilla
+Info:    RRT_Vanilla: Starting planning with 1 states already in datastructure
+Info:    RRT_Vanilla: Created 135881 states
+Info:    Preparing for run 1 of control_RRT_Vanilla
+Info:    RRT_Vanilla: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner RRT_Vanilla
+Info:    RRT_Vanilla: Created 291542 states
+Info:    Preparing for run 2 of control_RRT_Vanilla
+Info:    RRT_Vanilla: Starting planning with 1 states already in datastructure
+Info:    RRT_Vanilla: Created 221496 states
+Info:    Preparing for run 3 of control_RRT_Vanilla
+Info:    RRT_Vanilla: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner RRT_Vanilla
+Info:    RRT_Vanilla: Created 291816 states
+Info:    Preparing for run 4 of control_RRT_Vanilla
+Info:    RRT_Vanilla: Starting planning with 1 states already in datastructure
+Info:    RRT_Vanilla: Created 156327 states
+Info:    Preparing for run 5 of control_RRT_Vanilla
+Info:    RRT_Vanilla: Starting planning with 1 states already in datastructure
+Info:    RRT_Vanilla: Created 137029 states
+Info:    Preparing for run 6 of control_RRT_Vanilla
+Info:    RRT_Vanilla: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner RRT_Vanilla
+Info:    RRT_Vanilla: Created 292254 states
+Info:    Preparing for run 7 of control_RRT_Vanilla
+Info:    RRT_Vanilla: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner RRT_Vanilla
+Info:    RRT_Vanilla: Created 295572 states
+Info:    Preparing for run 8 of control_RRT_Vanilla
+Info:    RRT_Vanilla: Starting planning with 1 states already in datastructure
+Info:    RRT_Vanilla: Created 227111 states
+Info:    Preparing for run 9 of control_RRT_Vanilla
+Info:    RRT_Vanilla: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner RRT_Vanilla
+Info:    RRT_Vanilla: Created 303613 states
+Info:    Preparing for run 0 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 11497 states in 331 cells (224 internal + 107 external)
+Info:    Preparing for run 1 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    KPIECE1: Created 35143 states in 331 cells (224 internal + 107 external)
+Info:    Preparing for run 2 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 64796 states in 331 cells (224 internal + 107 external)
+Info:    Preparing for run 3 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 60385 states in 331 cells (224 internal + 107 external)
+Info:    Preparing for run 4 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 61053 states in 331 cells (224 internal + 107 external)
+Info:    Preparing for run 5 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 60268 states in 331 cells (224 internal + 107 external)
+Info:    Preparing for run 6 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    KPIECE1: Created 22470 states in 331 cells (224 internal + 107 external)
+Info:    Preparing for run 7 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 61544 states in 331 cells (224 internal + 107 external)
+Info:    Preparing for run 8 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    KPIECE1: Created 48045 states in 331 cells (224 internal + 107 external)
+Info:    Preparing for run 9 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    KPIECE1: Created 31865 states in 331 cells (224 internal + 107 external)
+Info:    Preparing for run 0 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 15164 states
+Info:    Preparing for run 1 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    RG-RRT: Created 692 states
+Info:    Preparing for run 2 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    RG-RRT: Created 4621 states
+Info:    Preparing for run 3 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 14534 states
+Info:    Preparing for run 4 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 13536 states
+Info:    Preparing for run 5 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 13341 states
+Info:    Preparing for run 6 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    RG-RRT: Created 7118 states
+Info:    Preparing for run 7 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    RG-RRT: Created 2436 states
+Info:    Preparing for run 8 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 14816 states
+Info:    Preparing for run 9 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    RG-RRT: Created 6284 states
+Info:    Benchmark complete

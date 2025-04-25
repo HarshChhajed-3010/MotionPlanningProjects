@@ -1,0 +1,270 @@
+OMPL version 1.6.0
+Experiment Car_Motion_Planning
+0 experiment properties
+Running on 1bc19d121d08
+Starting at 2025-03-30 02:05:39
+<<<|
+Properties of the state space 'CompoundSpace0'
+  - signature: 10 0 4 4 3 1 2 2 1 1 1 
+  - dimension: 4
+  - extent: 23.5414
+  - sanity checks for state space passed
+  - probability of valid states: 0.73
+  - average length of a valid motion: 5.02009
+  - average number of samples drawn per second: sampleUniform()=1.11232e+07 sampleUniformNear()=1.36171e+07 sampleGaussian()=8.19276e+06
+Settings for the state space 'CompoundSpace0'
+  - state validity check resolution: 1%
+  - valid segment count factor: 1
+  - state space:
+Compound state space 'CompoundSpace0' of dimension 4 [
+Compound state space 'SE2CompoundSpace1' of dimension 3 (locked) [
+Real vector state space 'RealVectorSpace2' of dimension 2 with bounds: 
+  - min: -6 -6 
+  - max: 6 6 
+ of weight 1
+SO2 state space 'SO2Space3'
+ of weight 0.5
+]
+Registered projections:
+  - <default>
+Projection of dimension 2
+Cell sizes (computed defaults): [0.6 0.6]
+ of weight 1
+Real vector state space 'RealVectorSpace4' of dimension 1 with bounds: 
+  - min: -5 
+  - max: 5 
+ of weight 0.5
+]
+Registered projections:
+  - CarProjection
+Projection of dimension 2
+Cell sizes (inferred by sampling): [0.648606 0.647457]
+
+Declared parameters:
+longest_valid_segment_fraction = 0.01
+max_control_duration = 10
+min_control_duration = 1
+projection.CarProjection.cellsize.0 = 0.648606
+projection.CarProjection.cellsize.1 = 0.647457
+projection.CarProjection.cellsize_factor = 0
+propagation_step_size = 0.235414
+valid_segment_count_factor = 1
+Valid state sampler named uniform with parameters:
+nr_attempts = 100
+  - control space:
+Real vector control space 'RealVectorControl[CompoundSpace0]' with bounds: 
+  - min: -1.0472 -2 
+  - max: 1.0472 2 
+  - can propagate backward: yes
+  - propagation step size: 0.235414
+  - propagation duration: [1, 10]
+Planner RRT specs:
+Multithreaded:                 No
+Reports approximate solutions: Yes
+Can optimize solutions:        No
+Aware of the following parameters: goal_bias intermediate_states
+Declared parameters for planner RRT:
+goal_bias = 0.05
+intermediate_states = 0
+Start states:
+Compound state [
+Compound state [
+RealVectorState [-5 -6]
+SO2State [1.5708]
+]
+RealVectorState [1]
+]
+Goal state, threshold = 0.3, memory address = 0x5644e870fe40, state = 
+Compound state [
+Compound state [
+RealVectorState [-4 5]
+SO2State [1.5708]
+]
+RealVectorState [1]
+]
+OptimizationObjective = nullptr
+There are 0 solutions
+
+Properties of benchmarked planners:
+Planner RRT_Vanilla specs:
+Multithreaded:                 No
+Reports approximate solutions: Yes
+Can optimize solutions:        No
+Aware of the following parameters: goal_bias intermediate_states
+Planner KPIECE1 specs:
+Multithreaded:                 No
+Reports approximate solutions: Yes
+Can optimize solutions:        No
+Aware of the following parameters: bad_score_factor border_fraction goal_bias good_score_factor max_close_samples
+Planner RG-RRT specs:
+Multithreaded:                 No
+Reports approximate solutions: Yes
+Can optimize solutions:        No
+Aware of the following parameters: first_control_sample goal_bias intermediate_states number_of_control_inputs
+|>>>
+<<<|
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        39 bits physical, 48 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               32
+On-line CPU(s) list:                  0-31
+Vendor ID:                            GenuineIntel
+Model name:                           Intel(R) Core(TM) i9-14900HX
+CPU family:                           6
+Model:                                183
+Thread(s) per core:                   2
+Core(s) per socket:                   16
+Socket(s):                            1
+Stepping:                             1
+BogoMIPS:                             4838.39
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid pni pclmulqdq vmx ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves avx_vnni umip waitpkg gfni vaes vpclmulqdq rdpid movdiri movdir64b fsrm md_clear serialize flush_l1d arch_capabilities
+Virtualization:                       VT-x
+Hypervisor vendor:                    Microsoft
+Virtualization type:                  full
+L1d cache:                            768 KiB (16 instances)
+L1i cache:                            512 KiB (16 instances)
+L2 cache:                             32 MiB (16 instances)
+L3 cache:                             36 MiB (1 instance)
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Mitigation; Clear Register File
+Vulnerability Retbleed:               Mitigation; Enhanced IBRS
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+|>>>
+10966672376363144 is the random seed
+60 seconds per run
+2048 MB per run
+10 runs per planner
+1740.02 seconds spent to collect the data
+1 enum type
+status|Unknown status|Invalid start|Invalid goal|Unrecognized goal type|Timeout|Approximate solution|Exact solution|Crash|Unknown status|Unknown status
+3 planners
+control_RRT_Vanilla
+10 common properties
+goal_bias = 0.15
+intermediate_states = 0
+longest_valid_segment_fraction = 0.01
+max_control_duration = 10
+min_control_duration = 1
+projection.CarProjection.cellsize.0 = 0.648606
+projection.CarProjection.cellsize.1 = 0.647457
+projection.CarProjection.cellsize_factor = 0
+propagation_step_size = 0.235414
+valid_segment_count_factor = 1
+13 properties for each run
+approximate solution BOOLEAN
+correct solution BOOLEAN
+graph motions INTEGER
+graph states INTEGER
+memory REAL
+solution clearance REAL
+solution difference REAL
+solution length REAL
+solution segments INTEGER
+solved BOOLEAN
+status ENUM
+time REAL
+valid segment fraction REAL
+10 runs
+0; 1; 135880; 135881; 64.9727; 0; 0; 20.2456; 18; 1; 6; 25.3289; 0; 
+1; 1; 291541; 291542; 129.918; 0; 0.356715; 35.312; 29; 0; 5; 60.0502; 0; 
+0; 1; 221495; 221496; 209.785; 0; 0; 37.1953; 29; 1; 6; 45.4322; 0; 
+1; 1; 291815; 291816; 209.785; 0; 0.429021; 32.9579; 27; 0; 5; 60.0829; 0; 
+0; 1; 156326; 156327; 209.785; 0; 0; 25.1893; 21; 1; 6; 32.154; 0; 
+0; 1; 137028; 137029; 209.785; 0; 0; 29.4267; 26; 1; 6; 27.1067; 0; 
+1; 1; 292253; 292254; 209.785; 0; 0.339186; 27.308; 25; 0; 5; 60.0849; 0; 
+1; 1; 295571; 295572; 209.785; 0; 0.331431; 30.6038; 27; 0; 5; 60.0268; 0; 
+0; 1; 227110; 227111; 210.504; 0; 0; 24.9538; 23; 1; 6; 44.9236; 0; 
+1; 1; 303612; 303613; 210.504; 0; 0.308229; 21.4226; 19; 0; 5; 60.0098; 0; 
+.
+control_KPIECE1
+13 common properties
+bad_score_factor = 0.45
+border_fraction = 0.8
+goal_bias = 0.1
+good_score_factor = 0.9
+longest_valid_segment_fraction = 0.01
+max_close_samples = 30
+max_control_duration = 10
+min_control_duration = 1
+projection.CarProjection.cellsize.0 = 0.648606
+projection.CarProjection.cellsize.1 = 0.647457
+projection.CarProjection.cellsize_factor = 0
+propagation_step_size = 0.235414
+valid_segment_count_factor = 1
+13 properties for each run
+approximate solution BOOLEAN
+correct solution BOOLEAN
+graph motions INTEGER
+graph states INTEGER
+memory REAL
+solution clearance REAL
+solution difference REAL
+solution length REAL
+solution segments INTEGER
+solved BOOLEAN
+status ENUM
+time REAL
+valid segment fraction REAL
+10 runs
+1; 1; 11496; 11497; 214.508; 0; 1.13303; 19.0685; 42; 0; 5; 497.929; 0; 
+0; 1; 35142; 35143; 214.508; 0; 0; 16.2435; 50; 1; 6; 31.9149; 0; 
+1; 1; 64795; 64796; 214.508; 0; 0.425471; 28.7205; 60; 0; 5; 60.071; 0; 
+1; 1; 60384; 60385; 214.508; 0; 0.329964; 28.0142; 58; 0; 5; 60.034; 0; 
+1; 1; 61052; 61053; 214.508; 0; 0.32668; 15.7727; 37; 0; 5; 60.0981; 0; 
+1; 1; 60267; 60268; 214.508; 0; 0.401434; 17.8914; 40; 0; 5; 60.095; 0; 
+0; 1; 22469; 22470; 214.508; 0; 0; 15.5373; 38; 1; 6; 17.6001; 0; 
+1; 1; 61543; 61544; 214.508; 0; 0.318041; 18.5977; 43; 0; 5; 60.0859; 0; 
+0; 1; 48044; 48045; 214.508; 0; 0; 16.0081; 39; 1; 6; 43.8905; 0; 
+0; 1; 31864; 31865; 214.508; 0; 0; 25.1893; 51; 1; 6; 29.6829; 0; 
+.
+control_RG-RRT
+12 common properties
+first_control_sample = 1
+goal_bias = 0.05
+intermediate_states = 0
+longest_valid_segment_fraction = 0.01
+max_control_duration = 10
+min_control_duration = 1
+number_of_control_inputs = 10
+projection.CarProjection.cellsize.0 = 0.648606
+projection.CarProjection.cellsize.1 = 0.647457
+projection.CarProjection.cellsize_factor = 0
+propagation_step_size = 0.235414
+valid_segment_count_factor = 1
+13 properties for each run
+approximate solution BOOLEAN
+correct solution BOOLEAN
+graph motions INTEGER
+graph states INTEGER
+memory REAL
+solution clearance REAL
+solution difference REAL
+solution length REAL
+solution segments INTEGER
+solved BOOLEAN
+status ENUM
+time REAL
+valid segment fraction REAL
+10 runs
+1; 1; 15163; 15164; 214.508; 0; 0.394966; 19.7747; 84; 0; 5; 60.0555; 0; 
+0; 1; 691; 692; 214.508; 0; 0; 20.481; 87; 1; 6; 0.283983; 0; 
+0; 1; 4620; 4621; 214.508; 0; 0; 22.8351; 97; 1; 6; 5.91559; 0; 
+1; 1; 14533; 14534; 214.508; 0; 0.349316; 14.8311; 63; 0; 5; 60.1025; 0; 
+1; 1; 13535; 13536; 214.508; 0; 0.337453; 22.3643; 95; 0; 5; 60.0145; 0; 
+1; 1; 13340; 13341; 238.48; 0; 0.329318; 13.1832; 56; 0; 5; 60.0599; 0; 
+0; 1; 7117; 7118; 253.434; 0; 0; 20.9518; 89; 1; 6; 15.7916; 0; 
+0; 1; 2435; 2436; 255.754; 0; 0; 20.481; 87; 1; 6; 1.88279; 0; 
+1; 1; 14815; 14816; 323.301; 0; 0.411666; 19.5393; 83; 0; 5; 60.0638; 0; 
+0; 1; 6283; 6284; 331.809; 0; 0; 17.4206; 74; 1; 6; 12.1585; 0; 
+.

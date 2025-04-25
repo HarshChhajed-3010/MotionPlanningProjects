@@ -1,0 +1,544 @@
+Info:    Beginning benchmark
+Info:    Preparing for run 0 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 322 states
+Info:    Preparing for run 1 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 474 states
+Info:    Preparing for run 2 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 539 states
+Info:    Preparing for run 3 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 1167 states
+Info:    Preparing for run 4 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 439 states
+Info:    Preparing for run 5 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 184 states
+Info:    Preparing for run 6 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 73 states
+Info:    Preparing for run 7 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 619 states
+Info:    Preparing for run 8 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 273 states
+Info:    Preparing for run 9 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 634 states
+Info:    Preparing for run 10 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 297 states
+Info:    Preparing for run 11 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 306 states
+Info:    Preparing for run 12 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 183 states
+Info:    Preparing for run 13 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 228 states
+Info:    Preparing for run 14 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 283 states
+Info:    Preparing for run 15 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 176 states
+Info:    Preparing for run 16 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 450 states
+Info:    Preparing for run 17 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 693 states
+Info:    Preparing for run 18 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 331 states
+Info:    Preparing for run 19 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 165 states
+Info:    Preparing for run 20 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 277 states
+Info:    Preparing for run 21 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 474 states
+Info:    Preparing for run 22 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 1190 states
+Info:    Preparing for run 23 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 186 states
+Info:    Preparing for run 24 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 25 states
+Info:    Preparing for run 25 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 173 states
+Info:    Preparing for run 26 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 135 states
+Info:    Preparing for run 27 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 145 states
+Info:    Preparing for run 28 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 649 states
+Info:    Preparing for run 29 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 220 states
+Info:    Preparing for run 30 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 143 states
+Info:    Preparing for run 31 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 910 states
+Info:    Preparing for run 32 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 118 states
+Info:    Preparing for run 33 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 253 states
+Info:    Preparing for run 34 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 90 states
+Info:    Preparing for run 35 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 186 states
+Info:    Preparing for run 36 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 416 states
+Info:    Preparing for run 37 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 311 states
+Info:    Preparing for run 38 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 226 states
+Info:    Preparing for run 39 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 188 states
+Info:    Preparing for run 40 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 307 states
+Info:    Preparing for run 41 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 1599 states
+Info:    Preparing for run 42 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 479 states
+Info:    Preparing for run 43 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 113 states
+Info:    Preparing for run 44 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 680 states
+Info:    Preparing for run 45 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 198 states
+Info:    Preparing for run 46 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 852 states
+Info:    Preparing for run 47 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 297 states
+Info:    Preparing for run 48 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 325 states
+Info:    Preparing for run 49 of control_RRT
+Info:    RRT: Starting planning with 1 states already in datastructure
+Info:    RRT: Created 473 states
+Info:    Preparing for run 0 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 49 states in 14 cells (9 internal + 5 external)
+Info:    Preparing for run 1 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 167 states in 55 cells (30 internal + 25 external)
+Info:    Preparing for run 2 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 878788 states in 115396 cells (113536 internal + 1860 external)
+Info:    Preparing for run 3 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 575218 states in 48075 cells (47601 internal + 474 external)
+Info:    Preparing for run 4 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 899620 states in 122092 cells (119592 internal + 2500 external)
+Info:    Preparing for run 5 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 18101 states in 5537 cells (4187 internal + 1350 external)
+Info:    Preparing for run 6 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 566486 states in 50199 cells (48614 internal + 1585 external)
+Info:    Preparing for run 7 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 679784 states in 77566 cells (77094 internal + 472 external)
+Info:    Preparing for run 8 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 62124 states in 15636 cells (13567 internal + 2069 external)
+Info:    Preparing for run 9 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 772479 states in 93387 cells (92582 internal + 805 external)
+Info:    Preparing for run 10 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 727292 states in 102284 cells (96237 internal + 6047 external)
+Info:    Preparing for run 11 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 849394 states in 110192 cells (108735 internal + 1457 external)
+Info:    Preparing for run 12 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 205043 states in 39600 cells (36961 internal + 2639 external)
+Info:    Preparing for run 13 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 88 states in 19 cells (17 internal + 2 external)
+Info:    Preparing for run 14 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 494 states in 163 cells (128 internal + 35 external)
+Info:    Preparing for run 15 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 687083 states in 67324 cells (66336 internal + 988 external)
+Info:    Preparing for run 16 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 946954 states in 131543 cells (128867 internal + 2676 external)
+Info:    Preparing for run 17 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 738377 states in 91897 cells (89846 internal + 2051 external)
+Info:    Preparing for run 18 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 9114 states in 2952 cells (1934 internal + 1018 external)
+Info:    Preparing for run 19 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 14052 states in 3701 cells (2945 internal + 756 external)
+Info:    Preparing for run 20 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 1175 states in 459 cells (273 internal + 186 external)
+Info:    Preparing for run 21 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 785005 states in 92428 cells (91627 internal + 801 external)
+Info:    Preparing for run 22 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 999 states in 390 cells (234 internal + 156 external)
+Info:    Preparing for run 23 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 8645 states in 2658 cells (2007 internal + 651 external)
+Info:    Preparing for run 24 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 744675 states in 79200 cells (77810 internal + 1390 external)
+Info:    Preparing for run 25 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 625707 states in 68535 cells (68271 internal + 264 external)
+Info:    Preparing for run 26 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 2897 states in 895 cells (638 internal + 257 external)
+Info:    Preparing for run 27 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 392834 states in 54214 cells (53225 internal + 989 external)
+Info:    Preparing for run 28 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 638582 states in 67155 cells (66829 internal + 326 external)
+Info:    Preparing for run 29 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 43 states in 14 cells (10 internal + 4 external)
+Info:    Preparing for run 30 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 277795 states in 33603 cells (33343 internal + 260 external)
+Info:    Preparing for run 31 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 176251 states in 37528 cells (34567 internal + 2961 external)
+Info:    Preparing for run 32 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 5928 states in 1958 cells (1243 internal + 715 external)
+Info:    Preparing for run 33 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 886343 states in 120642 cells (118538 internal + 2104 external)
+Info:    Preparing for run 34 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 975851 states in 137040 cells (133957 internal + 3083 external)
+Info:    Preparing for run 35 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 670254 states in 65646 cells (64207 internal + 1439 external)
+Info:    Preparing for run 36 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 640412 states in 62755 cells (62200 internal + 555 external)
+Info:    Preparing for run 37 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 216 states in 78 cells (39 internal + 39 external)
+Info:    Preparing for run 38 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 751701 states in 90951 cells (90174 internal + 777 external)
+Info:    Preparing for run 39 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 26235 states in 7655 cells (6194 internal + 1461 external)
+Info:    Preparing for run 40 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 665018 states in 66972 cells (66237 internal + 735 external)
+Info:    Preparing for run 41 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 34734 states in 9333 cells (7333 internal + 2000 external)
+Info:    Preparing for run 42 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 529681 states in 56520 cells (54253 internal + 2267 external)
+Info:    Preparing for run 43 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 684839 states in 69980 cells (69023 internal + 957 external)
+Info:    Preparing for run 44 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 503 states in 123 cells (112 internal + 11 external)
+Info:    Preparing for run 45 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 2257 states in 909 cells (610 internal + 299 external)
+Info:    Preparing for run 46 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Debug:   KPIECE1: Numerical precision limit reached. Resetting costs.
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 582453 states in 57793 cells (57252 internal + 541 external)
+Info:    Preparing for run 47 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    KPIECE1: Created 805 states in 321 cells (208 internal + 113 external)
+Info:    Preparing for run 48 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 766561 states in 92123 cells (91151 internal + 972 external)
+Info:    Preparing for run 49 of control_KPIECE1
+Info:    KPIECE1: Starting planning with 1 states already in datastructure
+Info:    ProblemDefinition: Adding approximate solution from planner KPIECE1
+Info:    KPIECE1: Created 724276 states in 94554 cells (91018 internal + 3536 external)
+Info:    Preparing for run 0 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 462 states
+Info:    Preparing for run 1 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 456 states
+Info:    Preparing for run 2 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 475 states
+Info:    Preparing for run 3 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 453 states
+Info:    Preparing for run 4 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 455 states
+Info:    Preparing for run 5 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 461 states
+Info:    Preparing for run 6 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 493 states
+Info:    Preparing for run 7 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 462 states
+Info:    Preparing for run 8 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 507 states
+Info:    Preparing for run 9 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 445 states
+Info:    Preparing for run 10 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 449 states
+Info:    Preparing for run 11 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 471 states
+Info:    Preparing for run 12 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 482 states
+Info:    Preparing for run 13 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 472 states
+Info:    Preparing for run 14 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 451 states
+Info:    Preparing for run 15 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 447 states
+Info:    Preparing for run 16 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 466 states
+Info:    Preparing for run 17 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 469 states
+Info:    Preparing for run 18 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 484 states
+Info:    Preparing for run 19 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 469 states
+Info:    Preparing for run 20 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 476 states
+Info:    Preparing for run 21 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 462 states
+Info:    Preparing for run 22 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 480 states
+Info:    Preparing for run 23 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 475 states
+Info:    Preparing for run 24 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 447 states
+Info:    Preparing for run 25 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 489 states
+Info:    Preparing for run 26 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 470 states
+Info:    Preparing for run 27 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 450 states
+Info:    Preparing for run 28 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 454 states
+Info:    Preparing for run 29 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 475 states
+Info:    Preparing for run 30 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 458 states
+Info:    Preparing for run 31 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 479 states
+Info:    Preparing for run 32 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 462 states
+Info:    Preparing for run 33 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 469 states
+Info:    Preparing for run 34 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 486 states
+Info:    Preparing for run 35 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 497 states
+Info:    Preparing for run 36 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 451 states
+Info:    Preparing for run 37 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 459 states
+Info:    Preparing for run 38 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 490 states
+Info:    Preparing for run 39 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 464 states
+Info:    Preparing for run 40 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 497 states
+Info:    Preparing for run 41 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 482 states
+Info:    Preparing for run 42 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 465 states
+Info:    Preparing for run 43 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 496 states
+Info:    Preparing for run 44 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 443 states
+Info:    Preparing for run 45 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 477 states
+Info:    Preparing for run 46 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 465 states
+Info:    Preparing for run 47 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 468 states
+Info:    Preparing for run 48 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 478 states
+Info:    Preparing for run 49 of control_RG-RRT
+Info:    RG-RRT: Starting with 1 states
+Info:    ProblemDefinition: Adding approximate solution from planner Unknown
+Info:    RG-RRT: Created 459 states
+Info:    Benchmark complete

@@ -9,8 +9,6 @@ python3 /code/visualise.py --obstacle "/code/build/obstacles.txt" --path "/code/
 
 
 parsing data to database 
-/usr/local/bin/ompl_benchmark_statistics.py kinematic_10.log -d kinematic_10.db
+/usr/local/bin/ompl_benchmark_statistics.py kinematic_10.log -d kinematic_10.db -p
 
 
-
-// why its not terminating, / terminating, 
