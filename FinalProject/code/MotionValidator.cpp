@@ -31,22 +31,24 @@ void UncertaintyManager::propagateUncertainty(const ob::State* from, const ob::S
 {
     auto it = stateUncertainty_.find(from);
     if (it == stateUncertainty_.end()) {
-        int dim = 2; // Assuming 2D state space
-        Eigen::VectorXd mean(dim);
-        for (int i = 0; i < dim; i++)
-            mean(i) = from->as<ob::RealVectorStateSpace::StateType>()->values[i];
-        
-        stateUncertainty_[from] = std::make_pair(mean, Eigen::MatrixXd::Identity(dim, dim) * 0.01);
+        // Initialize with process noise (Pw) instead of a fixed small diagonal
+        int dim = A.rows(); // Use actual state dimension from matrix A
+        Eigen::VectorXd mean = Eigen::VectorXd::Zero(dim);
+        const auto* rs = from->as<ob::RealVectorStateSpace::StateType>();
+        for (int i = 0; i < dim; ++i)
+            mean(i) = rs->values[i];
+        stateUncertainty_[from] = std::make_pair(mean, Pw); // Use Pw here
         it = stateUncertainty_.find(from);
     }
 
+    // Propagate mean and covariance
     Eigen::VectorXd nextMean = A * it->second.first + B * control;
     Eigen::MatrixXd nextCov = A * it->second.second * A.transpose() + Pw;
     stateUncertainty_[to] = std::make_pair(nextMean, nextCov);
 }
 
 bool UncertaintyManager::satisfiesChanceConstraints(const ob::State* state, 
-    const std::vector<Obstacle>& obstacles)
+    const std::vector<Obstacle>& obstacles) const
 {
     auto it = stateUncertainty_.find(state);
     if (it == stateUncertainty_.end()) return true;
@@ -62,7 +64,7 @@ bool UncertaintyManager::satisfiesChanceConstraints(const ob::State* state,
 }
 
 bool UncertaintyManager::isCircleConstraintSatisfied(const Eigen::Vector2d& mean, 
-    const Eigen::Matrix2d& cov, const Obstacle& obs)
+    const Eigen::Matrix2d& cov, const Obstacle& obs) const
 {
     Eigen::Vector2d diff = obs.center - mean;
     double dist = diff.norm();
@@ -77,7 +79,7 @@ bool UncertaintyManager::isCircleConstraintSatisfied(const Eigen::Vector2d& mean
 }
 
 bool UncertaintyManager::isRectConstraintSatisfied(const Eigen::Vector2d& mean, 
-    const Eigen::Matrix2d& cov, const Obstacle& obs)
+    const Eigen::Matrix2d& cov, const Obstacle& obs) const
 {
     Eigen::Vector2d obsCenter(obs.x + obs.width/2, obs.y + obs.height/2);
     double obsRadius = std::hypot(obs.width/2, obs.height/2);
@@ -110,8 +112,7 @@ Eigen::VectorXd CCRRTMotionValidator::stateToVec(const ob::State* state) const {
 }
 
 
-bool CCRRTMotionValidator::checkMotion(const ob::State* s1, const ob::State* s2) const
-{
+bool CCRRTMotionValidator::checkMotion(const ob::State* s1, const ob::State* s2) const {
     if (!si_->isValid(s1) || !si_->isValid(s2)) return false;
 
     const unsigned int nd = si_->getStateSpace()->validSegmentCount(s1, s2);
@@ -125,10 +126,12 @@ bool CCRRTMotionValidator::checkMotion(const ob::State* s1, const ob::State* s2)
     }
 
     for (unsigned int i = 1; i <= nd; ++i) {
-        // Eigen::VectorXd u = B_.inverse() * (stateToVec(states[i]) - A_ * stateToVec(states[i - 1]));
         Eigen::VectorXd u = B_.inverse() * (stateToVec(states[i]) - A_ * stateToVec(states[i - 1])) / dt_;
-        const_cast<CCRRTMotionValidator*>(this)->uncertaintyManager_.propagateUncertainty(states[i - 1], states[i], A_, B_, u, Pw_);
-        if (!const_cast<CCRRTMotionValidator*>(this)->uncertaintyManager_.satisfiesChanceConstraints(states[i], obstacles_)) {
+        
+        // Propagate uncertainty (allowed because uncertaintyManager_ is mutable)
+        uncertaintyManager_.propagateUncertainty(states[i - 1], states[i], A_, B_, u, Pw_);
+        
+        if (!uncertaintyManager_.satisfiesChanceConstraints(states[i], obstacles_)) {
             for (auto* s : states) si_->freeState(s);
             return false;
         }

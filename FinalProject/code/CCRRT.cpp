@@ -91,12 +91,12 @@ public:
 
         // Propagate uncertainty using the Kalman filter prediction step
         auto startIt = stateUncertainty_.find(start);
-        // If no prior uncertainty, initialize with small diagonal covariance
+        // If no prior uncertainty, initialize with process noise (Pw) instead of small diagonal
         Eigen::MatrixXd prevCov = (startIt != stateUncertainty_.end()) ? 
             startIt->second.covariance : 
-            Eigen::MatrixXd::Identity(dim, dim) * 0.01;
+            Pw; // Replace 0.01*I with Pw
 
-        // Update covariance using linear system uncertainty propagation
+        // Propagate covariance: nextCov = A*prevCov*A^T + Pw
         Eigen::MatrixXd nextCov = A * prevCov * A.transpose() + Pw;
         stateUncertainty_[result] = {nextMean, nextCov};
     }
@@ -254,25 +254,19 @@ int main(int argc, char **argv)
         std::cout << "Path written to solution_path.txt\n";
     }
 
-    //
-    // --- Dump covariances from the *raw* (un‐interpolated) path
-    //
+    
     {
         std::ofstream covFile("covariances.txt");
         std::cout << "[INFO] Writing covariances...\n";
         auto raw = ss.getSolutionPath().asGeometric();
-        auto smooth = ss.getSolutionPath().asGeometric(); 
-        smooth.interpolate();
         std::size_t N = raw.getStateCount();
         std::cout << "[INFO] Raw path has " << N << " states.\n";
-
+    
         auto *uncert = planner->getStateUncertainty();
-        for (std::size_t i = 0; i < N; ++i)
-        {
+        for (std::size_t i = 0; i < N; ++i) {
             const ob::State *s = raw.getState(i);
             auto it = uncert->find(s);
-            if (it != uncert->end())
-            {
+            if (it != uncert->end()) {
                 const auto &C = it->second.covariance;
                 covFile << C(0,0) << " " << C(0,1) << " "
                         << C(1,0) << " " << C(1,1) << "\n";
@@ -281,10 +275,10 @@ int main(int argc, char **argv)
             {
                 covFile << "0 0 0 0\n";
             }
+            
         }
         std::cout << "[INFO] Covariances written to covariances.txt\n";
     }
-
     //
     // --- Dump the entire RRT search tree (all tried edges)
     //

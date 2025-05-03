@@ -45,18 +45,20 @@ public:
         const Eigen::MatrixXd& A, const Eigen::MatrixXd& B,
         const Eigen::VectorXd& control, const Eigen::MatrixXd& Pw);
 
-    // Check if state satisfies chance constraints with all obstacles
+    // Mark satisfiesChanceConstraints as const
     bool satisfiesChanceConstraints(const ob::State* state, 
-        const std::vector<Obstacle>& obstacles);
+        const std::vector<Obstacle>& obstacles) const;
+
+    
 
 private:
     // Evaluate chance constraint for circular obstacles
     bool isCircleConstraintSatisfied(const Eigen::Vector2d& mean, 
-        const Eigen::Matrix2d& cov, const Obstacle& obs);
+        const Eigen::Matrix2d& cov, const Obstacle& obs) const;
     
     // Convert rectangular obstacles to circular for constraint checking
     bool isRectConstraintSatisfied(const Eigen::Vector2d& mean, 
-        const Eigen::Matrix2d& cov, const Obstacle& obs);
+        const Eigen::Matrix2d& cov, const Obstacle& obs) const;
 
     double psafe_;  // Probability threshold for safety constraints
     std::map<const ob::State*, std::pair<Eigen::VectorXd, Eigen::MatrixXd>> stateUncertainty_;
@@ -87,7 +89,7 @@ public:
     
 
 private:
-    UncertaintyManager uncertaintyManager_;  // Manages state uncertainty
+    mutable UncertaintyManager uncertaintyManager_;  // Manages state uncertainty
     std::vector<Obstacle> obstacles_;        // List of obstacles to check against
     double dt_;                       // Time step for state propagation
     Eigen::MatrixXd A_;                     // State transition matrix
