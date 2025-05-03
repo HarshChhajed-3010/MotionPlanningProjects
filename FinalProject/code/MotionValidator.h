@@ -89,6 +89,7 @@ public:
 private:
     UncertaintyManager uncertaintyManager_;  // Manages state uncertainty
     std::vector<Obstacle> obstacles_;        // List of obstacles to check against
+    double dt_;                       // Time step for state propagation
     Eigen::MatrixXd A_;                     // State transition matrix
     Eigen::MatrixXd B_;                     // Control input matrix
     Eigen::MatrixXd Pw_;                    // Process noise covariance

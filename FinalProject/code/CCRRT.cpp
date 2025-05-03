@@ -83,10 +83,11 @@ public:
         Eigen::MatrixXd B = Eigen::MatrixXd::Identity(dim, ctrl_dim);  // Control input matrix
         Eigen::MatrixXd Pw = Eigen::MatrixXd::Identity(dim, dim) * 0.01;  // Process noise covariance
 
-        // Propagate mean state using linear dynamics
-        Eigen::VectorXd nextMean = A * startVec + B * controlVec;
+        // Propagate mean state using linear dynamics (scaled by duration)
+        Eigen::VectorXd nextMean = A * startVec + B * controlVec * duration; // Add *duration
         for (unsigned int i = 0; i < dim; ++i)
             rstate->values[i] = nextMean(i);
+
 
         // Propagate uncertainty using the Kalman filter prediction step
         auto startIt = stateUncertainty_.find(start);

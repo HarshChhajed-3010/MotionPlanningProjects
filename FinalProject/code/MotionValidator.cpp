@@ -85,14 +85,18 @@ bool UncertaintyManager::isRectConstraintSatisfied(const Eigen::Vector2d& mean,
 }
 
 CCRRTMotionValidator::CCRRTMotionValidator(const ob::SpaceInformationPtr& si, double psafe)
-    : ob::MotionValidator(si), uncertaintyManager_(psafe)
+    : ob::MotionValidator(si), uncertaintyManager_(psafe) 
 {
+    // Cast to control::SpaceInformation to access control-specific methods
+    auto csi = std::static_pointer_cast<oc::SpaceInformation>(si);
+    dt_ = csi->getPropagationStepSize(); // Now valid
+
+    // Initialize matrices after getting dt_
     int dim = si->getStateDimension();
     A_ = Eigen::MatrixXd::Identity(dim, dim);
     B_ = Eigen::MatrixXd::Identity(dim, 2);
     Pw_ = Eigen::MatrixXd::Identity(dim, dim) * 0.01;
 }
-
 void CCRRTMotionValidator::setObstacles(const std::vector<Obstacle>& obstacles) {
     obstacles_ = obstacles;
 }
@@ -121,7 +125,8 @@ bool CCRRTMotionValidator::checkMotion(const ob::State* s1, const ob::State* s2)
     }
 
     for (unsigned int i = 1; i <= nd; ++i) {
-        Eigen::VectorXd u = B_.inverse() * (stateToVec(states[i]) - A_ * stateToVec(states[i - 1]));
+        // Eigen::VectorXd u = B_.inverse() * (stateToVec(states[i]) - A_ * stateToVec(states[i - 1]));
+        Eigen::VectorXd u = B_.inverse() * (stateToVec(states[i]) - A_ * stateToVec(states[i - 1])) / dt_;
         const_cast<CCRRTMotionValidator*>(this)->uncertaintyManager_.propagateUncertainty(states[i - 1], states[i], A_, B_, u, Pw_);
         if (!const_cast<CCRRTMotionValidator*>(this)->uncertaintyManager_.satisfiesChanceConstraints(states[i], obstacles_)) {
             for (auto* s : states) si_->freeState(s);
