@@ -40,6 +40,19 @@ using namespace ompl::control;
 namespace ob = ompl::base;
 namespace oc = ompl::control;
 
+// Add this struct at the top (after includes)
+struct StateKey {
+    double x, y;
+    bool operator<(const StateKey& other) const {
+        if (x != other.x) return x < other.x;
+        return y < other.y;
+    }
+    static StateKey fromState(const ob::State* s) {
+        auto* st = s->as<ob::RealVectorStateSpace::StateType>();
+        return {st->values[0], st->values[1]};
+    }
+};
+
 // CCRRT (Chance Constrained RRT) extends the standard RRT algorithm 
 // to handle uncertainty in motion planning by maintaining state uncertainty 
 // and checking probabilistic collision constraints
@@ -86,7 +99,7 @@ public:
         // Linear system matrices for uncertainty propagation
         Eigen::MatrixXd A = Eigen::MatrixXd::Identity(dim, dim);  // State transition matrix
         Eigen::MatrixXd B = Eigen::MatrixXd::Identity(dim, ctrl_dim);  // Control input matrix
-        Eigen::MatrixXd Pw = Eigen::MatrixXd::Identity(dim, dim) * 0.01;  // Process noise covariance
+        Eigen::MatrixXd Pw = Eigen::MatrixXd::Identity(dim, dim) * 0.01;  // Process noise covariancee (reduced)
 
         // Propagate mean state using linear dynamics (scaled by duration)
         Eigen::VectorXd nextMean = A * startVec + B * controlVec * duration;
@@ -94,7 +107,7 @@ public:
             rstate->values[i] = nextMean(i);
 
         // Propagate uncertainty using the Kalman filter prediction step
-        auto startIt = stateUncertainty_.find(start);
+        auto startIt = stateUncertainty_.find(StateKey::fromState(start));
         // If no prior uncertainty, initialize with process noise (Pw) instead of small diagonal
         Eigen::MatrixXd prevCov = (startIt != stateUncertainty_.end()) ? 
             startIt->second.covariance : 
@@ -110,7 +123,7 @@ public:
 
         // Propagate covariance: nextCov = A*prevCov*A^T + Pw
         Eigen::MatrixXd nextCov = A * prevCov * A.transpose() + Pw;
-        stateUncertainty_[result] = {nextMean, nextCov, currentTime};
+        stateUncertainty_[StateKey::fromState(result)] = {nextMean, nextCov, currentTime};
 
         // Add additional uncertainty when near dynamic obstacles
         for (const auto& dynObs : dynamicObstacles) {
@@ -136,10 +149,10 @@ protected:
     double psafe_;  // Safety probability threshold
     double currentTime_;  // Current simulation time
     // Map to store state uncertainty (mean, covariance, timestamp) for each visited state
-    std::map<const ob::State*, StateWithCovariance> stateUncertainty_;
+    std::map<StateKey, StateWithCovariance> stateUncertainty_;
 
 public:
-    std::map<const ob::State*, StateWithCovariance>* getStateUncertainty() {
+    std::map<StateKey, StateWithCovariance>* getStateUncertainty() {
         return &stateUncertainty_;
     }
     
@@ -152,7 +165,7 @@ class ChanceConstraintStateValidityChecker : public ob::StateValidityChecker {
 public:
     ChanceConstraintStateValidityChecker(const ob::SpaceInformationPtr &si,
                                        double psafe,
-                                       std::map<const ob::State*, CCRRT::StateWithCovariance>* stateUncertainty)
+                                       std::map<StateKey, CCRRT::StateWithCovariance>* stateUncertainty)
         : ob::StateValidityChecker(si), psafe_(psafe), stateUncertainty_(stateUncertainty) {}
 
     virtual bool isValid(const ob::State *state) const override {
@@ -163,8 +176,9 @@ public:
 
         // Get time for dynamic obstacle position
         double time = 0.0;
-        if (stateUncertainty_->find(state) != stateUncertainty_->end()) {
-            time = (*stateUncertainty_)[state].timestamp;
+        auto key = StateKey::fromState(state);
+        if (stateUncertainty_->find(key) != stateUncertainty_->end()) {
+            time = (*stateUncertainty_)[key].timestamp;
         }
 
         // Check static obstacles (treat rectangles as circles for collision)
@@ -194,8 +208,8 @@ public:
         }
 
         // If we have uncertainty information, check probabilistic constraints
-        if (stateUncertainty_->find(state) != stateUncertainty_->end()) {
-            const auto& uncertainty = (*stateUncertainty_)[state];
+        if (stateUncertainty_->find(key) != stateUncertainty_->end()) {
+            const auto& uncertainty = (*stateUncertainty_)[key];
             
             // Check against static obstacles (treat rectangles as circles)
             for (const auto& obs : staticObstacles) {
@@ -226,7 +240,7 @@ public:
     
 private:
     double psafe_;
-    std::map<const ob::State*, CCRRT::StateWithCovariance>* stateUncertainty_;
+    std::map<StateKey, CCRRT::StateWithCovariance>* stateUncertainty_;
 
     bool isChanceConstraintSatisfied(const CCRRT::StateWithCovariance& stateUnc,
                                    const Obstacle& obs) const {
@@ -260,6 +274,33 @@ void writeObstacleTrajectory(const std::vector<DynamicObstacle>& dynObstacles,
     }
 }
 
+// Helper: Find nearest state in uncertainty map by Euclidean distance
+const CCRRT::StateWithCovariance* findNearestUncertainty(
+    const std::map<StateKey, CCRRT::StateWithCovariance>& uncert,
+    const ob::State* query)
+{
+    if (uncert.empty() || query == nullptr) {
+        std::cerr << "[DEBUG] Uncertainty map empty or query is null\n";
+        return nullptr;
+    }
+    StateKey qk = StateKey::fromState(query);
+    double minDist = std::numeric_limits<double>::max();
+    const CCRRT::StateWithCovariance* nearest = nullptr;
+    for (const auto& pair : uncert) {
+        double dx = qk.x - pair.first.x;
+        double dy = qk.y - pair.first.y;
+        double dist = dx*dx + dy*dy;
+        if (dist < minDist) {
+            minDist = dist;
+            nearest = &pair.second;
+        }
+    }
+    if (!nearest) {
+        std::cerr << "[DEBUG] No nearest state found in uncertainty map\n";
+    }
+    return nearest;
+}
+
 int main(int argc, char **argv)
 {
     // 1) Set up state & control spaces
@@ -271,13 +312,16 @@ int main(int argc, char **argv)
 
     auto cspace = std::make_shared<oc::RealVectorControlSpace>(space, 2);
     ob::RealVectorBounds cbounds(2);
-    cbounds.setLow(-1);
-    cbounds.setHigh(1);
+    cbounds.setLow(-2);   // Increased from -1 to -2
+    cbounds.setHigh(2);   // Increased from 1 to 2
     cspace->setBounds(cbounds);
 
     // 2) Create SpaceInformation & CCRRT planner
     auto si      = std::make_shared<oc::SpaceInformation>(space, cspace);
-    auto planner = std::make_shared<CCRRT>(si, /*psafe=*/0.999);
+    auto planner = std::make_shared<CCRRT>(si, /*psafe=*/0.98);
+
+    // Set min/max control duration to avoid OMPL warning
+    si->setMinMaxControlDuration(1, 50);
 
     // 3) Use CCRRT::propagate so we track covariance
     si->setStatePropagator(
@@ -317,10 +361,10 @@ int main(int argc, char **argv)
     // Final position: (4.0, 1.0) - moves downward
     // Velocity: Moving down at 0.15 units per second
     dynamicObstacles.push_back(DynamicObstacle(
-        Eigen::Vector2d(4.0, 1.0),   // Initial center
+        Eigen::Vector2d(7.0, 7.0),   // Initial center
         1.5,                         // Radius
         Eigen::Vector2d(0.0, -0.15), // Velocity (downward)
-        Eigen::Vector2d(4.0, -5.0)    // Final position (downward)
+        Eigen::Vector2d(7.0, -5.0)    // Final position (downward)
     ));
 
     // Write obstacle definitions to file for visualization
@@ -351,10 +395,10 @@ int main(int argc, char **argv)
     // 7) Collision + chance‐constraint checker
     si->setStateValidityChecker(
         std::make_shared<ChanceConstraintStateValidityChecker>(
-            si, /*psafe=*/0.999, planner->getStateUncertainty()));
+            si, /*psafe=*/0.98, planner->getStateUncertainty()));
 
     // 8) Motion validator
-    auto mv = std::make_shared<CCRRTMotionValidator>(si, /*psafe=*/0.999);
+    auto mv = std::make_shared<CCRRTMotionValidator>(si, /*psafe=*/0.98);
     // Convert dynamic obstacles to static for motion validator
     // This is ok since motion validator works with small segments
     std::vector<Obstacle> allObsForValidator = staticObstacles;
@@ -366,13 +410,13 @@ int main(int argc, char **argv)
     si->setMotionValidator(mv);
 
     // 9) Tuning
-    si->setStateValidityCheckingResolution(0.01);
-    si->setPropagationStepSize(0.05);
+    si->setStateValidityCheckingResolution(0.02);
+    si->setPropagationStepSize(0.1);
 
-    ss.setStartAndGoalStates(start, goal, /*threshold=*/0.5);
+    ss.setStartAndGoalStates(start, goal, /*threshold=*/1.0);
 
     // 10) Plan!
-    ss.solve(ob::timedPlannerTerminationCondition(5.0));
+    ss.solve(ob::timedPlannerTerminationCondition(30.0));
 
     if (!ss.haveSolutionPath())
     {
@@ -389,7 +433,7 @@ int main(int argc, char **argv)
     {
         std::ofstream pathFile("solution_path.txt");
         auto smooth = ss.getSolutionPath().asGeometric();
-        smooth.interpolate();
+        smooth.interpolate(50); // Interpolate to 50 states
         for (std::size_t i = 0; i < smooth.getStateCount(); ++i)
         {
             auto *st = smooth.getState(i)
@@ -409,19 +453,20 @@ int main(int argc, char **argv)
         std::cout << "[INFO] Raw path has " << N << " states.\n";
     
         auto *uncert = planner->getStateUncertainty();
-        for (std::size_t i = 0; i < N; ++i) {
-            const ob::State *s = raw.getState(i);
-            auto it = uncert->find(s);
-            if (it != uncert->end()) {
-                const auto &C = it->second.covariance;
-                covFile << C(0,0) << " " << C(0,1) << " "
-                        << C(1,0) << " " << C(1,1) << "\n";
+        try {
+            for (std::size_t i = 0; i < N; ++i) {
+                const ob::State *s = raw.getState(i);
+                const CCRRT::StateWithCovariance* nearest = findNearestUncertainty(*uncert, s);
+                if (nearest) {
+                    const auto &C = nearest->covariance;
+                    covFile << C(0,0) << " " << C(0,1) << " "
+                            << C(1,0) << " " << C(1,1) << "\n";
+                } else {
+                    covFile << "0 0 0 0\n";
+                }
             }
-            else
-            {
-                covFile << "0 0 0 0\n";
-            }
-            
+        } catch (const std::exception& e) {
+            std::cerr << "[ERROR] Exception while writing covariances: " << e.what() << std::endl;
         }
         std::cout << "[INFO] Covariances written to covariances.txt\n";
     }
@@ -434,7 +479,7 @@ int main(int argc, char **argv)
         auto *uncert = planner->getStateUncertainty();
         for (std::size_t i = 0; i < N; ++i) {
             const ob::State *s = raw.getState(i);
-            auto it = uncert->find(s);
+            auto it = uncert->find(StateKey::fromState(s));
             if (it != uncert->end()) {
                 auto *st = s->as<ob::RealVectorStateSpace::StateType>();
                 timeFile << st->values[0] << " " << st->values[1] << " " 
