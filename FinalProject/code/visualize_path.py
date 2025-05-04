@@ -112,8 +112,23 @@ def animate_car_path(obstacles, path, covariances, trajectory_file=None, save_vi
         ax.plot(xs[-1], ys[-1], marker='*', color='red', markersize=10, label='Goal')
 
     ax.set_aspect('equal', 'box')
-    ax.set_xlim(min(xs) - 1, max(xs) + 1)
-    ax.set_ylim(min(ys) - 1, max(ys) + 1)
+
+    # --- FIX: Set fixed axis limits so visualization does not scale with goal ---
+    # Compute global min/max for all path and obstacles
+    all_x = xs + [x for x, _, w, _ in static_obstacles] + [x for x, _, w, _ in dynamic_obstacles]
+    all_y = ys + [y for _, y, _, h in static_obstacles] + [y for _, y, _, h in dynamic_obstacles]
+    all_w = [w for _, _, w, _ in static_obstacles] + [w for _, _, w, _ in dynamic_obstacles]
+    all_h = [h for _, _, _, h in static_obstacles] + [h for _, _, _, h in dynamic_obstacles]
+
+    min_x = min(all_x) - max(all_w, default=0) - 1
+    max_x = max(all_x) + max(all_w, default=0) + 1
+    min_y = min(all_y) - max(all_h, default=0) - 1
+    max_y = max(all_y) + max(all_h, default=0) + 1
+
+    ax.set_xlim(min_x, max_x)
+    ax.set_ylim(min_y, max_y)
+    # --- END FIX ---
+
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.set_title('Animated Car Path')

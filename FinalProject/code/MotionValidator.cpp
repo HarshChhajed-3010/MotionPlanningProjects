@@ -120,95 +120,148 @@ bool UncertaintyManager::isRectConstraintSatisfied(const Eigen::Vector2d& mean,
     return isCircleConstraintSatisfied(mean, cov, Obstacle(obsCenter[0], obsCenter[1], obsRadius));
 }
 
+// Implementation of CCRRTMotionValidator
 CCRRTMotionValidator::CCRRTMotionValidator(const ob::SpaceInformationPtr& si, double psafe)
-    : ob::MotionValidator(si), uncertaintyManager_(psafe)
+    : ob::MotionValidator(si), psafe_(psafe)
 {
-    // Cast to control::SpaceInformation to access control-specific methods
-    auto csi = std::static_pointer_cast<oc::SpaceInformation>(si);
-    dt_ = csi->getPropagationStepSize(); // Now valid
-    // Initialize matrices after getting dt_
-    int dim = si->getStateDimension();
-    A_ = Eigen::MatrixXd::Identity(dim, dim);
-    B_ = Eigen::MatrixXd::Identity(dim, 2);
-    Pw_ = Eigen::MatrixXd::Identity(dim, dim) * 0.01;
 }
 
 void CCRRTMotionValidator::setObstacles(const std::vector<Obstacle>& obstacles) {
     obstacles_ = obstacles;
 }
 
-Eigen::VectorXd CCRRTMotionValidator::stateToVec(const ob::State* state) const {
-    const auto* rs = state->as<ob::RealVectorStateSpace::StateType>();
-    Eigen::VectorXd vec(si_->getStateDimension());
-    for (unsigned int i = 0; i < vec.size(); ++i)
-        vec(i) = rs->values[i];
-    return vec;
+void CCRRTMotionValidator::setStateUncertainty(std::map<StateKey, CCRRTDetail::StateWithCovariance>* stateUncertainty) {
+    stateUncertainty_ = stateUncertainty;
 }
 
 bool CCRRTMotionValidator::checkMotion(const ob::State* s1, const ob::State* s2) const {
-    if (!si_->isValid(s1) || !si_->isValid(s2)) return false;
-    const unsigned int nd = si_->getStateSpace()->validSegmentCount(s1, s2);
-    std::vector<ob::State*> states(nd + 1);
-    states[0] = si_->cloneState(s1);
-    states[nd] = si_->cloneState(s2);
-    // Use the getter method to access state uncertainty
-    const auto& stateUncertainty = uncertaintyManager_.getStateUncertainty();
-    auto s1_it = stateUncertainty.find(s1);
-    auto s2_it = stateUncertainty.find(s2);
-    // Get timestamps for start and end states
-    double t1 = 0.0, t2 = 0.0;
-    if (s1_it != stateUncertainty.end()) {
-        t1 = s1_it->second.timestamp;
-    }
-    if (s2_it != stateUncertainty.end()) {
-        t2 = s2_it->second.timestamp;
-    }
-    // Linear interpolation of timestamps
-    const double dt = (t2 - t1) / nd;  
-    for (unsigned int i = 1; i < nd; ++i) {
-        states[i] = si_->allocState();
-        si_->getStateSpace()->interpolate(s1, s2, (double)i / nd, states[i]);
-        // Get current interpolated timestamp for dynamic obstacle position
-        double currentTime = t1 + i * dt;
-        // Update positions of dynamic obstacles in the validator
-        std::vector<Obstacle> timeAdjustedObstacles = staticObstacles;
-        for (const auto& dynObs : dynamicObstacles) {
-            Eigen::Vector2d pos = dynObs.getPositionAtTime(currentTime);
-            timeAdjustedObstacles.push_back(Obstacle(pos[0], pos[1], dynObs.getRadius() + 0.2)); // Inflate by 0.2 units
-        }
-        // Predict where dynamic obstacles will be when robot reaches this point
-        double timeToReach = currentTime - t1;
-        // Instead of redeclaring, clear and reuse the vector
-        timeAdjustedObstacles.clear();
-        timeAdjustedObstacles.insert(timeAdjustedObstacles.end(), staticObstacles.begin(), staticObstacles.end());
-        for (const auto& dynObs : dynamicObstacles) {
-            // Predict position with some lookahead
-            Eigen::Vector2d pos = dynObs.getPositionAtTime(currentTime + 0.5*timeToReach);
-            timeAdjustedObstacles.push_back(Obstacle(pos[0], pos[1], 
-                                        dynObs.getRadius() + 0.3)); // Larger inflation
-        }
-        // Check state validity with current obstacle positions
-        if (!uncertaintyManager_.satisfiesChanceConstraints(states[i], timeAdjustedObstacles)) {
-            for (auto* s : states) si_->freeState(s);
+    double dist = si_->distance(s1, s2);
+    unsigned int nd = std::max<unsigned int>(2, std::ceil(dist / si_->getStateValidityCheckingResolution()));
+    ob::State *test = si_->allocState();
+
+    for (unsigned int i = 1; i <= nd; ++i) {
+        double ratio = (double)i / (double)nd;
+        si_->getStateSpace()->interpolate(s1, s2, ratio, test);
+
+        if (!si_->satisfiesBounds(test)) {
+            si_->freeState(test);
             return false;
         }
+
+        const auto *st = test->as<ob::RealVectorStateSpace::StateType>();
+        Eigen::Vector2d stateVec(st->values[0], st->values[1]);
+
+        // --- FIX: Check dynamic obstacles at correct time for each interpolated state ---
+        double t = 0.0;
+        if (stateUncertainty_) {
+            StateKey key = StateKey::fromState(test);
+            auto it = stateUncertainty_->find(key);
+            if (it != stateUncertainty_->end()) {
+                t = it->second.timestamp;
+            } else {
+                // Find nearest uncertainty if exact not found
+                double minDist = std::numeric_limits<double>::max();
+                for (const auto& pair : *stateUncertainty_) {
+                    double dx = key.x - pair.first.x;
+                    double dy = key.y - pair.first.y;
+                    double d = dx*dx + dy*dy;
+                    if (d < minDist) {
+                        minDist = d;
+                        t = pair.second.timestamp;
+                    }
+                }
+            }
+        }
+
+        // Check static obstacles (positions do not change)
+        for (const auto& obs : obstacles_) {
+            if (obs.isCircular()) {
+                Eigen::Vector2d obsCenter = obs.getCenter();
+                double obsRadius = obs.getRadius();
+                double d = (stateVec - obsCenter).norm();
+                if (d <= obsRadius) {
+                    si_->freeState(test);
+                    return false;
+                }
+            }
+        }
+
+        // Check dynamic obstacles at their correct position at time t
+        for (size_t idx = 0; idx < dynamicObstacles.size(); ++idx) {
+            const auto& dynObs = dynamicObstacles[idx];
+            Eigen::Vector2d obsCenter = dynObs.getPositionAtTime(t);
+            double obsRadius = dynObs.getRadius();
+            double d = (stateVec - obsCenter).norm();
+            if (d <= obsRadius) {
+                si_->freeState(test);
+                return false;
+            }
+        }
+
+        // Chance constraint check for all obstacles (static and dynamic) at correct time
+        if (stateUncertainty_) {
+            StateKey key = StateKey::fromState(test);
+            const CCRRTDetail::StateWithCovariance* unc = nullptr;
+            auto it = stateUncertainty_->find(key);
+            if (it != stateUncertainty_->end()) {
+                unc = &it->second;
+            } else {
+                // Use nearest uncertainty if exact not found
+                double minDist = std::numeric_limits<double>::max();
+                for (const auto& pair : *stateUncertainty_) {
+                    double dx = key.x - pair.first.x;
+                    double dy = key.y - pair.first.y;
+                    double d = dx*dx + dy*dy;
+                    if (d < minDist) {
+                        minDist = d;
+                        unc = &pair.second;
+                    }
+                }
+            }
+            if (unc) {
+                // Static obstacles
+                for (const auto& obs : obstacles_) {
+                    if (obs.isCircular()) {
+                        if (!isChanceConstraintSatisfied(*unc, obs)) {
+                            si_->freeState(test);
+                            return false;
+                        }
+                    }
+                }
+                // Dynamic obstacles at correct time
+                for (size_t idx = 0; idx < dynamicObstacles.size(); ++idx) {
+                    const auto& dynObs = dynamicObstacles[idx];
+                    Eigen::Vector2d obsCenter = dynObs.getPositionAtTime(unc->timestamp);
+                    double obsRadius = dynObs.getRadius();
+                    Obstacle tempObs(obsCenter[0], obsCenter[1], obsRadius);
+                    if (!isChanceConstraintSatisfied(*unc, tempObs)) {
+                        si_->freeState(test);
+                        return false;
+                    }
+                }
+            }
+        }
     }
-    // Propagate uncertainty and control
-    for (unsigned int i = 1; i <= nd; ++i) {
-        Eigen::VectorXd u = B_.inverse() * (stateToVec(states[i]) - A_ * stateToVec(states[i-1])) / dt_;
-        uncertaintyManager_.propagateUncertainty(states[i-1], states[i], A_, B_, u, Pw_, dt_);
-    }
-    for (auto* s : states) si_->freeState(s);
+    si_->freeState(test);
     return true;
 }
 
 bool CCRRTMotionValidator::checkMotion(const ob::State* s1, const ob::State* s2,
-    std::pair<ob::State*, double>& lastValid) const
+    std::pair<ob::State*, double>& /*lastValid*/) const
 {
-    if (!checkMotion(s1, s2)) {
-        si_->copyState(lastValid.first, s1);
-        lastValid.second = 0.0;
-        return false;
-    }
-    return true;
+    return checkMotion(s1, s2);
+}
+
+bool CCRRTMotionValidator::isChanceConstraintSatisfied(const CCRRTDetail::StateWithCovariance& stateUnc,
+                                                      const Obstacle& obs) const {
+    Eigen::Vector2d mean = stateUnc.mean.head<2>();
+    Eigen::Matrix2d cov = stateUnc.covariance.block<2,2>(0, 0);
+    Eigen::Vector2d diff = obs.getCenter() - mean;
+    double dist = diff.norm();
+    double directionalVar = (dist > 1e-6) ?
+        (diff.normalized().transpose() * cov * diff.normalized()) :
+        cov.eigenvalues().real().maxCoeff();
+    double sigma = std::sqrt(directionalVar);
+    double beta = std::sqrt(2) * erfcinv(2 * (1 - psafe_));
+    return dist > obs.getRadius() + beta * sigma;
 }
