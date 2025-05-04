@@ -117,7 +117,7 @@ def animate_car_path(obstacles, path, covariances, trajectory_file=None, save_vi
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.set_title('Animated Car Path')
-    ax.legend()
+    ax.legend(loc='upper right')
 
     # Animation elements
     path_line, = ax.plot([], [], color='red', linewidth=2)

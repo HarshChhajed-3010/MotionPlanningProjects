@@ -301,15 +301,19 @@ const CCRRT::StateWithCovariance* findNearestUncertainty(
     return nearest;
 }
 
+// ...existing code...
+
 int main(int argc, char **argv)
 {
     // 1) Set up state & control spaces
+    // State space: R2 (2D Euclidean space for (x, y) position)
     auto space = std::make_shared<ob::RealVectorStateSpace>(2);
     ob::RealVectorBounds bounds(2);
     bounds.setLow(-10);
     bounds.setHigh(10);
     space->setBounds(bounds);
 
+    // Control space: R2 (2D Euclidean space for (vx, vy) control inputs)
     auto cspace = std::make_shared<oc::RealVectorControlSpace>(space, 2);
     ob::RealVectorBounds cbounds(2);
     cbounds.setLow(-2);   // Increased from -1 to -2
@@ -322,6 +326,9 @@ int main(int argc, char **argv)
 
     // Set min/max control duration to avoid OMPL warning
     si->setMinMaxControlDuration(1, 50);
+
+    // Set the goal bias - add this line
+    planner->setGoalBias(0.1); // 5% chance to sample the goal
 
     // 3) Use CCRRT::propagate so we track covariance
     si->setStatePropagator(
@@ -384,6 +391,7 @@ int main(int argc, char **argv)
     }
 
     // 5) Start / goal
+    // Start and goal states are in R2
     ob::ScopedState<ob::RealVectorStateSpace> start(space), goal(space);
     start[0] = -5; start[1] = -5;
     goal[0]  =  7; goal[1]  =  7;
@@ -416,7 +424,7 @@ int main(int argc, char **argv)
     ss.setStartAndGoalStates(start, goal, /*threshold=*/1.0);
 
     // 10) Plan!
-    ss.solve(ob::timedPlannerTerminationCondition(30.0));
+    ss.solve(ob::timedPlannerTerminationCondition(10.0));
 
     if (!ss.haveSolutionPath())
     {
