@@ -70,13 +70,15 @@ bool UncertaintyManager::satisfiesChanceConstraints(const ob::State* state,
     Eigen::Vector2d mean = it->second.mean.head<2>();
     Eigen::Matrix2d cov = it->second.covariance.block<2,2>(0, 0);
     for (const auto& obs : obstacles) {
-        if (obs.isCircular() && !isCircleConstraintSatisfied(mean, cov, obs)) 
-            return false;
-        if (!obs.isCircular()) {
-            // Get obstacle position at current time for dynamic obstacles
-            Eigen::Vector2d obsPos = getDynamicObstaclePosition(obs, currentTime);
-            Obstacle timeAdjustedObs(obsPos[0], obsPos[1], obs.getRadius());
-            if (!isRectConstraintSatisfied(mean, cov, timeAdjustedObs))
+        if (obs.isCircular()) {
+            if (!isCircleConstraintSatisfied(mean, cov, obs)) 
+                return false;
+        } else {
+            // Rectangle: use circumscribed circle
+            Eigen::Vector2d obsCenter = obs.getCenter();
+            double obsRadius = std::hypot(obs.getWidth()/2, obs.getHeight()/2);
+            Obstacle circObs(obsCenter[0], obsCenter[1], obsRadius);
+            if (!isCircleConstraintSatisfied(mean, cov, circObs))
                 return false;
         }
     }
@@ -173,6 +175,17 @@ bool CCRRTMotionValidator::checkMotion(const ob::State* s1, const ob::State* s2)
         for (const auto& dynObs : dynamicObstacles) {
             Eigen::Vector2d pos = dynObs.getPositionAtTime(currentTime);
             timeAdjustedObstacles.push_back(Obstacle(pos[0], pos[1], dynObs.getRadius() + 0.2)); // Inflate by 0.2 units
+        }
+        // Predict where dynamic obstacles will be when robot reaches this point
+        double timeToReach = currentTime - t1;
+        // Instead of redeclaring, clear and reuse the vector
+        timeAdjustedObstacles.clear();
+        timeAdjustedObstacles.insert(timeAdjustedObstacles.end(), staticObstacles.begin(), staticObstacles.end());
+        for (const auto& dynObs : dynamicObstacles) {
+            // Predict position with some lookahead
+            Eigen::Vector2d pos = dynObs.getPositionAtTime(currentTime + 0.5*timeToReach);
+            timeAdjustedObstacles.push_back(Obstacle(pos[0], pos[1], 
+                                        dynObs.getRadius() + 0.3)); // Larger inflation
         }
         // Check state validity with current obstacle positions
         if (!uncertaintyManager_.satisfiesChanceConstraints(states[i], timeAdjustedObstacles)) {

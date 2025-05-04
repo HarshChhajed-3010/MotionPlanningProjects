@@ -111,6 +111,21 @@ public:
         // Propagate covariance: nextCov = A*prevCov*A^T + Pw
         Eigen::MatrixXd nextCov = A * prevCov * A.transpose() + Pw;
         stateUncertainty_[result] = {nextMean, nextCov, currentTime};
+
+        // Add additional uncertainty when near dynamic obstacles
+        for (const auto& dynObs : dynamicObstacles) {
+            Eigen::Vector2d obsPos = dynObs.getPositionAtTime(currentTime);
+            Eigen::Vector2d statePos(nextMean(0), nextMean(1));
+            double dist = (obsPos - statePos).norm();
+    
+            if (dist < 5.0) { // If within 5 units of a dynamic obstacle
+                double scaling = (5.0 - dist)/5.0; // Scale from 0 to 1
+                Eigen::Matrix2d obsUncertainty = Eigen::Matrix2d::Identity() * 
+                                                dynObs.getPositionUncertainty() * 
+                                                scaling;
+                nextCov.block<2,2>(0,0) += obsUncertainty;
+            }
+        }
     }
 
     virtual void getPlannerData(ob::PlannerData &data) const override {
@@ -152,12 +167,21 @@ public:
             time = (*stateUncertainty_)[state].timestamp;
         }
 
-        // Check static obstacles first
+        // Check static obstacles (treat rectangles as circles for collision)
         for (const auto& obs : staticObstacles) {
             Eigen::Vector2d stateVec(s->values[0], s->values[1]);
-            double dist = (stateVec - Eigen::Vector2d(obs.getX(), obs.getY())).norm();
-            if (dist <= obs.getRadius())
-                return false;
+            if (obs.isCircular()) {
+                double dist = (stateVec - obs.getCenter()).norm();
+                if (dist <= obs.getRadius())
+                    return false;
+            } else {
+                // Rectangle: use circumscribed circle
+                Eigen::Vector2d obsCenter = obs.getCenter();
+                double obsRadius = std::hypot(obs.getWidth()/2, obs.getHeight()/2);
+                double dist = (stateVec - obsCenter).norm();
+                if (dist <= obsRadius)
+                    return false;
+            }
         }
         
         // Check dynamic obstacles at their position at time t
@@ -173,10 +197,19 @@ public:
         if (stateUncertainty_->find(state) != stateUncertainty_->end()) {
             const auto& uncertainty = (*stateUncertainty_)[state];
             
-            // Check against static obstacles
+            // Check against static obstacles (treat rectangles as circles)
             for (const auto& obs : staticObstacles) {
-                if (!isChanceConstraintSatisfied(uncertainty, obs))
-                    return false;
+                if (obs.isCircular()) {
+                    if (!isChanceConstraintSatisfied(uncertainty, obs))
+                        return false;
+                } else {
+                    // Rectangle: use circumscribed circle
+                    Eigen::Vector2d obsCenter = obs.getCenter();
+                    double obsRadius = std::hypot(obs.getWidth()/2, obs.getHeight()/2);
+                    Obstacle circObs(obsCenter[0], obsCenter[1], obsRadius);
+                    if (!isChanceConstraintSatisfied(uncertainty, circObs))
+                        return false;
+                }
             }
             
             // Check against dynamic obstacles at their position at time t
@@ -199,7 +232,7 @@ private:
                                    const Obstacle& obs) const {
         Eigen::Vector2d mean = stateUnc.mean.head<2>();
         Eigen::Matrix2d cov = stateUnc.covariance.block<2,2>(0, 0);
-        Eigen::Vector2d diff = Eigen::Vector2d(obs.getX(), obs.getY()) - mean;
+        Eigen::Vector2d diff = obs.getCenter() - mean;
         double dist = diff.norm();
         double directionalVar = (dist > 1e-6) ? 
             (diff.normalized().transpose() * cov * diff.normalized()) :
@@ -260,12 +293,34 @@ int main(int argc, char **argv)
     // Convert the rectangular obstacle to dynamic
     // Initial position: (-4.0, 1.0)
     // Final position: (4.0, 1.0) - moves to the right
-    // Velocity: Moving right at 0.5 units per second
+    // Velocity: Moving right at 0.5 units per secondd
     dynamicObstacles.push_back(DynamicObstacle(
         Eigen::Vector2d(-4.0, 1.0),  // Initial center
         1.5,                         // Radius
         Eigen::Vector2d(0.15, 0.0),  // Velocity
         Eigen::Vector2d(4.0, 1.0)    // Final position
+    ));
+
+    // Convert the rectangular obstacle to dynamic
+    // Initial position: (-4.0, 1.0)
+    // Final position: (-4.0, 7.0) - moves upward
+    // Velocity: Moving up at 0.15 units per second
+    dynamicObstacles.push_back(DynamicObstacle(
+        Eigen::Vector2d(-4.0, 1.0),  // Initial center
+        1.5,                         // Radius
+        Eigen::Vector2d(0.0, 0.15),  // Velocity (upward)
+        Eigen::Vector2d(-4.0, 7.0)   // Final position (upward)
+    ));
+
+    // Add a dynamic obstacle moving downward
+    // Initial position: (4.0, 7.0)
+    // Final position: (4.0, 1.0) - moves downward
+    // Velocity: Moving down at 0.15 units per second
+    dynamicObstacles.push_back(DynamicObstacle(
+        Eigen::Vector2d(4.0, 1.0),   // Initial center
+        1.5,                         // Radius
+        Eigen::Vector2d(0.0, -0.15), // Velocity (downward)
+        Eigen::Vector2d(4.0, -5.0)    // Final position (downward)
     ));
 
     // Write obstacle definitions to file for visualization
@@ -370,7 +425,6 @@ int main(int argc, char **argv)
         }
         std::cout << "[INFO] Covariances written to covariances.txt\n";
     }
-    
     // Write time information for each state in the solution path
     {
         std::ofstream timeFile("state_times.txt");
@@ -389,7 +443,6 @@ int main(int argc, char **argv)
         }
         std::cout << "[INFO] State times written to state_times.txt\n";
     }
-    
     //
     // --- Dump the entire RRT search tree (all tried edges)
     //
@@ -418,6 +471,5 @@ int main(int argc, char **argv)
         treeFile.close();
         std::cout << "RRT tree written to rrt_tree.txt\n";
     }
-
     return 0;
 }

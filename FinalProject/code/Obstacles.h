@@ -61,6 +61,12 @@ public:
         return newPosition;
     }
 
+    // Add this method to provide position uncertainty
+    double getPositionUncertainty() const {
+        // Return a fixed uncertainty value (can be tuned)
+        return 0.2;
+    }
+
 private:
     Eigen::Vector2d initialCenter_;
     Eigen::Vector2d velocity_;
