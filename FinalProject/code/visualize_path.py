@@ -9,15 +9,24 @@ from matplotlib.patches import Ellipse
 from matplotlib.animation import FuncAnimation, FFMpegWriter
 
 def read_obstacles(file_path):
-    obstacles = []
+    static_obstacles = []
+    dynamic_obstacles = []
     with open(file_path, 'r') as f:
         for line in f:
             parts = line.strip().split(',')
             if len(parts) < 4:
                 continue
-            x, y, w, h = map(float, parts[:4])
-            obstacles.append((x, y, w, h))
-    return obstacles
+            try:
+                x, y, w = map(float, parts[:3])
+                last_part = parts[3].split()
+                h = float(last_part[0])
+                if len(last_part) > 1 and last_part[1] == "dynamic":
+                    dynamic_obstacles.append((x, y, w, h))
+                else:
+                    static_obstacles.append((x, y, w, h))
+            except ValueError:
+                continue
+    return static_obstacles, dynamic_obstacles
 
 def read_path(file_path):
     path = []
@@ -47,12 +56,45 @@ def read_tree(file_path):
             segs.append(((x1, y1), (x2, y2)))
     return segs
 
-def animate_car_path(obstacles, path, covariances, save_video=False):
-    fig, ax = plt.subplots()
+def read_obstacle_trajectory(file_path):
+    trajectory = {}
+    with open(file_path, 'r') as f:
+        for line in f:
+            t, obs_id, x, y, r = map(float, line.strip().split())
+            if obs_id not in trajectory:
+                trajectory[obs_id] = []
+            trajectory[obs_id].append((t, x, y, r))
+    return trajectory
 
-    # Draw obstacles
-    for x, y, w, h in obstacles:
+def animate_car_path(obstacles, path, covariances, trajectory_file=None, save_video=False):
+    fig, ax = plt.subplots()
+    
+    # Separate static and dynamic obstacles
+    static_obstacles, dynamic_obstacles = obstacles
+    print(f"[DEBUG] Found {len(static_obstacles)} static and {len(dynamic_obstacles)} dynamic obstacles")
+    
+    # Load dynamic obstacle trajectories
+    dynamic_trajectories = {}
+    if trajectory_file and os.path.exists(trajectory_file):
+        dynamic_trajectories = read_obstacle_trajectory(trajectory_file)
+        print(f"[INFO] Loaded trajectory data from {trajectory_file}")
+        for obs_id, traj in dynamic_trajectories.items():
+            print(f"  Obstacle {obs_id}: {len(traj)} points")
+    else:
+        print(f"[WARN] No trajectory file found at '{trajectory_file}'")
+
+    # Draw static obstacles
+    static_patches = []
+    for x, y, w, h in static_obstacles:
         rect = patches.Rectangle((x, y), w, h, linewidth=1, edgecolor='black', facecolor='gray')
+        static_patches.append(rect)
+        ax.add_patch(rect)
+
+    # Initialize dynamic obstacles
+    dynamic_patches = []
+    for i, (x, y, w, h) in enumerate(dynamic_obstacles):
+        rect = patches.Rectangle((x, y), w, h, linewidth=1, edgecolor='red', facecolor='pink')
+        dynamic_patches.append(rect)
         ax.add_patch(rect)
 
     # Draw RRT tree
@@ -90,20 +132,23 @@ def animate_car_path(obstacles, path, covariances, save_video=False):
 
     def init():
         path_line.set_data([], [])
-        return path_line, car_patch, cov_ellipse
+        return (path_line, car_patch, cov_ellipse, 
+                *static_patches, *dynamic_patches)
 
     def update(frame):
         x, y, theta, _ = path[frame]
         path_line.set_data(xs[:frame + 1], ys[:frame + 1])
 
+        # Update car position
         dx = -car_length / 2
         dy = -car_width / 2
         rot = np.array([[np.cos(theta), -np.sin(theta)],
-                        [np.sin(theta), np.cos(theta)]])
+                       [np.sin(theta), np.cos(theta)]])
         offset = rot @ np.array([dx, dy])
         car_patch.set_xy((x + offset[0], y + offset[1]))
         car_patch.angle = np.degrees(theta)
 
+        # Update covariance ellipse
         cov = np.array(covariances[frame])
         vals, vecs = np.linalg.eigh(cov)
         order = vals.argsort()[::-1]
@@ -115,7 +160,38 @@ def animate_car_path(obstacles, path, covariances, save_video=False):
         cov_ellipse.height = height
         cov_ellipse.angle = angle
 
-        return path_line, car_patch, cov_ellipse
+        # Update dynamic obstacles
+        current_time = frame * 0.1  # Keep original timing
+        for obs_id, traj in dynamic_trajectories.items():
+            if int(obs_id) < len(dynamic_patches):  # Make sure obstacle exists
+                # Find closest trajectory points
+                for i in range(len(traj)-1):
+                    if traj[i][0] <= current_time <= traj[i+1][0]:
+                        t1, x1, y1, r1 = traj[i]
+                        t2, x2, y2, r2 = traj[i+1]
+                        
+                        # Scale the displacement by 1/10th
+                        center_x = (x1 + x2) / 2  # Center point
+                        center_y = (y1 + y2) / 2
+                        x1_scaled = center_x + (x1 - center_x) / 10
+                        x2_scaled = center_x + (x2 - center_x) / 10
+                        y1_scaled = center_y + (y1 - center_y) / 10
+                        y2_scaled = center_y + (y2 - center_y) / 10
+                        
+                        # Linear interpolation with scaled coordinates
+                        alpha = (current_time - t1) / (t2 - t1)
+                        x = x1_scaled + alpha * (x2_scaled - x1_scaled)
+                        y = y1_scaled + alpha * (y2_scaled - y1_scaled)
+                        w = h = 2 * r1  # Keep original size
+                        
+                        # Update obstacle position
+                        dynamic_patches[int(obs_id)].set_xy((x - w/2, y - h/2))
+                        dynamic_patches[int(obs_id)].set_width(w)
+                        dynamic_patches[int(obs_id)].set_height(h)
+                        break
+
+        return (path_line, car_patch, cov_ellipse, 
+                *static_patches, *dynamic_patches)
 
     ani = FuncAnimation(fig, update, frames=len(path),
                         init_func=init, blit=True, interval=50, repeat=False)
@@ -131,6 +207,7 @@ def main():
     parser = argparse.ArgumentParser(description="Animate and save car path with uncertainty.")
     parser.add_argument("--pathfile", type=str, required=True, help="Path file with x y theta v per line")
     parser.add_argument("--obstacles", type=str, required=True, help="Obstacle file in x,y,w,h format per line")
+    parser.add_argument("--trajectory", type=str, help="Dynamic obstacle trajectory file")
     parser.add_argument("--savevideo", action="store_true", help="Save animation as MP4 instead of showing it")
     args = parser.parse_args()
 
@@ -151,7 +228,9 @@ def main():
         zero_cov = ((0.0, 0.0), (0.0, 0.0))
         covariances.extend([zero_cov] * missing)
 
-    animate_car_path(obstacles, path, covariances, save_video=args.savevideo)
+    animate_car_path(obstacles, path, covariances, 
+                    trajectory_file=args.trajectory,
+                    save_video=args.savevideo)
 
 if __name__ == "__main__":
     main()

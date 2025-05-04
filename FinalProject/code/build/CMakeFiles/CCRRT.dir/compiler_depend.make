@@ -733,6 +733,7 @@ CMakeFiles/CCRRT.dir/CCRRT.cpp.o: ../CCRRT.cpp \
   /usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
   ../MotionValidator.h \
   /usr/local/include/ompl-1.6/ompl/base/spaces/RealVectorStateSpace.h \
+  ../Obstacles.h \
   /usr/include/c++/11/fstream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
@@ -1340,12 +1341,15 @@ CMakeFiles/CCRRT.dir/MotionValidator.cpp.o: ../MotionValidator.cpp \
   /usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
   /usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
   /usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
-  /usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h
+  /usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+  ../Obstacles.h
 
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h:
 
 /usr/include/c++/11/fstream:
+
+../Obstacles.h:
 
 /usr/local/include/ompl-1.6/ompl/base/spaces/RealVectorStateSpace.h:
 

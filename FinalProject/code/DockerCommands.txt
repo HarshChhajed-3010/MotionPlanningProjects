@@ -1,8 +1,7 @@
 DockerCommands
 docker run -it -v "C:\Users\prana\OneDrive\Desktop\WPI\MotionPlanning\FinalProject\code:/code/" cchamzas/rbe550-ompl:initial-commit /bin/bash
 
-python3 ../visualize_path.py --pathfile solution_path.txt --obstacles obstacles.txt --output ccrrt_path.png
-
+ python3 ../visualize_path.py --pathfile solution_path.txt --obstacles obstacles.txt --trajectory obstacle_trajectory.txt --savevideo
 
 
 

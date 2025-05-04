@@ -1,3 +1,6 @@
+#ifndef MOTION_VALIDATOR_H
+#define MOTION_VALIDATOR_H
+
 #pragma once
 #include <ompl/control/SpaceInformation.h>
 #include <ompl/base/MotionValidator.h>
@@ -6,29 +9,10 @@
 #include <Eigen/Dense>
 #include <map>
 #include <vector>
+#include "Obstacles.h"
 
 namespace ob = ompl::base;
 namespace oc = ompl::control;
-
-// Represents both circular and rectangular obstacles in the environment
-struct Obstacle {
-    // Constructor for circular obstacles
-    Obstacle(const Eigen::Vector2d& c, double r) : center(c), radius(r), isCircular(true) {}
-    
-    // Constructor for rectangular obstacles
-    Obstacle(double x_, double y_, double w, double h) : 
-        x(x_), y(y_), width(w), height(h), isCircular(false) {}
-    
-    // Properties for circular obstacles
-    Eigen::Vector2d center;
-    double radius;
-    
-    // Properties for rectangular obstacles
-    double x, y, width, height;
-    
-    // Flag to determine obstacle type
-    bool isCircular;
-};
 
 // Manages state uncertainty propagation and chance constraint checking
 class UncertaintyManager {
@@ -38,18 +22,29 @@ public:
 
     // Store uncertainty (mean and covariance) for a given state
     void storeUncertainty(const ob::State* state, 
-        const Eigen::VectorXd& mean, const Eigen::MatrixXd& cov);
+        const Eigen::VectorXd& mean, const Eigen::MatrixXd& cov, double timestamp);
 
     // Propagate uncertainty from one state to another using linear dynamics
     void propagateUncertainty(const ob::State* from, const ob::State* to,
         const Eigen::MatrixXd& A, const Eigen::MatrixXd& B,
-        const Eigen::VectorXd& control, const Eigen::MatrixXd& Pw);
+        const Eigen::VectorXd& control, const Eigen::MatrixXd& Pw,
+        double deltaTime);
 
     // Mark satisfiesChanceConstraints as const
     bool satisfiesChanceConstraints(const ob::State* state, 
         const std::vector<Obstacle>& obstacles) const;
 
-    
+    // Add timestamp to state uncertainty storage
+    struct StateUncertainty {
+        Eigen::VectorXd mean;
+        Eigen::MatrixXd covariance;
+        double timestamp;
+    };
+
+    // Add this getter method
+    const std::map<const ob::State*, StateUncertainty>& getStateUncertainty() const {
+        return stateUncertainty_;
+    }
 
 private:
     // Evaluate chance constraint for circular obstacles
@@ -60,8 +55,11 @@ private:
     bool isRectConstraintSatisfied(const Eigen::Vector2d& mean, 
         const Eigen::Matrix2d& cov, const Obstacle& obs) const;
 
+    // Helper function to get dynamic obstacle position at time t
+    Eigen::Vector2d getDynamicObstaclePosition(const Obstacle& obs, double time) const;
+
     double psafe_;  // Probability threshold for safety constraints
-    std::map<const ob::State*, std::pair<Eigen::VectorXd, Eigen::MatrixXd>> stateUncertainty_;
+    std::map<const ob::State*, StateUncertainty> stateUncertainty_;
 };
 
 // Motion validator that incorporates uncertainty in collision checking
@@ -74,19 +72,22 @@ public:
     void setObstacles(const std::vector<Obstacle>& obstacles);
 
     // Check if motion between states is valid considering uncertainty
-    virtual bool checkMotion(const ob::State* s1, const ob::State* s2) const override;
+    bool checkMotion(const ob::State* s1, const ob::State* s2) const override;
 
     // Check motion and return last valid state if motion is invalid
-    virtual bool checkMotion(const ob::State* s1, const ob::State* s2,
+    bool checkMotion(const ob::State* s1, const ob::State* s2,
         std::pair<ob::State*, double>& lastValid) const override;
 
     // Access uncertainty manager for external use
-    UncertaintyManager& getUncertaintyManager() { return uncertaintyManager_; }
+    UncertaintyManager& getUncertaintyManager();
 
     Eigen::VectorXd stateToVec(const ob::State* state) const;
-    // Convert state to Eigen vector for easier manipulation
 
-    
+    Eigen::Vector2d getObstaclePosition(const Obstacle& obs) const;
+
+    double getObstacleRadius(const Obstacle& obs) const;
+
+    Obstacle createObstacle(const Eigen::Vector2d& pos, double radius) const;
 
 private:
     mutable UncertaintyManager uncertaintyManager_;  // Manages state uncertainty
@@ -96,3 +97,5 @@ private:
     Eigen::MatrixXd B_;                     // Control input matrix
     Eigen::MatrixXd Pw_;                    // Process noise covariance
 };
+
+#endif // MOTION_VALIDATOR_H

@@ -110,13 +110,13 @@ int ompl::control::RGRRT::selectReachableMotion(const std::shared_ptr<Motion> &q
     double minD = nearD;
     const auto &reachable = qnear->reachable;
     int id = -1;
-    for (int i = 0; i < reachable.size(); ++i)
+    for (size_t i = 0; i < reachable.size(); ++i)
     {
         double newD = si_->distance(reachable[i]->state, qrand->state);
         if (newD < minD)
         {
             minD = newD;
-            id = i;
+            id = static_cast<int>(i);
         }
     }
     return id;

@@ -8,11 +8,15 @@
 #include <ompl/util/Exception.h>
 #include <Eigen/Dense>
 #include "MotionValidator.h"
+#include "Obstacles.h"
 #include <cmath>
 #include <fstream>
 #include <functional>
 #include <vector>
 
+// Define global obstacle containers
+std::vector<Obstacle> staticObstacles;
+std::vector<DynamicObstacle> dynamicObstacles;
 
 // Implementation of inverse complementary error function
 inline double erfcinv(double x) {
@@ -45,11 +49,12 @@ public:
     struct StateWithCovariance {
         Eigen::VectorXd mean; // Mean vector of the state
         Eigen::MatrixXd covariance; // Covariance matrix of the state
+        double timestamp;  // Time when this state was reached
     };
 
     // Constructor initializes the planner with a safety probability threshold
     CCRRT(const oc::SpaceInformationPtr &si, double psafe = 0.99) 
-        : oc::RRT(si), psafe_(psafe) {
+        : oc::RRT(si), psafe_(psafe), currentTime_(0.0) {
         setName("CCRRT");
     }
 
@@ -84,10 +89,9 @@ public:
         Eigen::MatrixXd Pw = Eigen::MatrixXd::Identity(dim, dim) * 0.01;  // Process noise covariance
 
         // Propagate mean state using linear dynamics (scaled by duration)
-        Eigen::VectorXd nextMean = A * startVec + B * controlVec * duration; // Add *duration
+        Eigen::VectorXd nextMean = A * startVec + B * controlVec * duration;
         for (unsigned int i = 0; i < dim; ++i)
             rstate->values[i] = nextMean(i);
-
 
         // Propagate uncertainty using the Kalman filter prediction step
         auto startIt = stateUncertainty_.find(start);
@@ -95,10 +99,18 @@ public:
         Eigen::MatrixXd prevCov = (startIt != stateUncertainty_.end()) ? 
             startIt->second.covariance : 
             Pw; // Replace 0.01*I with Pw
+            
+        // Get current timestamp or initialize to 0
+        double currentTime = (startIt != stateUncertainty_.end()) ? 
+            startIt->second.timestamp + duration : 
+            currentTime_ + duration;
+            
+        // Update current time to max observed time
+        currentTime_ = std::max(currentTime_, currentTime);
 
         // Propagate covariance: nextCov = A*prevCov*A^T + Pw
         Eigen::MatrixXd nextCov = A * prevCov * A.transpose() + Pw;
-        stateUncertainty_[result] = {nextMean, nextCov};
+        stateUncertainty_[result] = {nextMean, nextCov, currentTime};
     }
 
     virtual void getPlannerData(ob::PlannerData &data) const override {
@@ -107,16 +119,19 @@ public:
 
 protected:
     double psafe_;  // Safety probability threshold
-    // Map to store state uncertainty (mean and covariance) for each visited state
+    double currentTime_;  // Current simulation time
+    // Map to store state uncertainty (mean, covariance, timestamp) for each visited state
     std::map<const ob::State*, StateWithCovariance> stateUncertainty_;
 
 public:
     std::map<const ob::State*, StateWithCovariance>* getStateUncertainty() {
         return &stateUncertainty_;
     }
+    
+    double getCurrentTime() const {
+        return currentTime_;
+    }
 };
-
-std::vector<Obstacle> obstacles;
 
 class ChanceConstraintStateValidityChecker : public ob::StateValidityChecker {
 public:
@@ -131,21 +146,48 @@ public:
         if (!si_->satisfiesBounds(state))
             return false;
 
-        if (stateUncertainty_->find(state) == stateUncertainty_->end()) {
-            for (const auto& obs : obstacles) {
-                Eigen::Vector2d stateVec(s->values[0], s->values[1]);
-                double dist = (stateVec - obs.center).norm();
-                if (dist <= obs.radius)
-                    return false;
-            }
-            return true;
+        // Get time for dynamic obstacle position
+        double time = 0.0;
+        if (stateUncertainty_->find(state) != stateUncertainty_->end()) {
+            time = (*stateUncertainty_)[state].timestamp;
         }
 
-        const auto& uncertainty = (*stateUncertainty_)[state];
-        for (const auto& obs : obstacles) {
-            if (!isChanceConstraintSatisfied(uncertainty, obs))
+        // Check static obstacles first
+        for (const auto& obs : staticObstacles) {
+            Eigen::Vector2d stateVec(s->values[0], s->values[1]);
+            double dist = (stateVec - Eigen::Vector2d(obs.getX(), obs.getY())).norm();
+            if (dist <= obs.getRadius())
                 return false;
         }
+        
+        // Check dynamic obstacles at their position at time t
+        for (const auto& dynObs : dynamicObstacles) {
+            Eigen::Vector2d obsPosition = dynObs.getPositionAtTime(time);
+            Eigen::Vector2d stateVec(s->values[0], s->values[1]);
+            double dist = (stateVec - obsPosition).norm();
+            if (dist <= dynObs.getRadius())
+                return false;
+        }
+
+        // If we have uncertainty information, check probabilistic constraints
+        if (stateUncertainty_->find(state) != stateUncertainty_->end()) {
+            const auto& uncertainty = (*stateUncertainty_)[state];
+            
+            // Check against static obstacles
+            for (const auto& obs : staticObstacles) {
+                if (!isChanceConstraintSatisfied(uncertainty, obs))
+                    return false;
+            }
+            
+            // Check against dynamic obstacles at their position at time t
+            for (const auto& dynObs : dynamicObstacles) {
+                Eigen::Vector2d pos = dynObs.getPositionAtTime(time);
+                Obstacle tempObs(pos[0], pos[1], dynObs.getRadius());
+                if (!isChanceConstraintSatisfied(uncertainty, tempObs))
+                    return false;
+            }
+        }
+        
         return true;
     }
     
@@ -157,14 +199,33 @@ private:
                                    const Obstacle& obs) const {
         Eigen::Vector2d mean = stateUnc.mean.head<2>();
         Eigen::Matrix2d cov = stateUnc.covariance.block<2,2>(0, 0);
-        Eigen::Vector2d diff = obs.center - mean;
+        Eigen::Vector2d diff = Eigen::Vector2d(obs.getX(), obs.getY()) - mean;
         double dist = diff.norm();
-        
-        double sigma = std::sqrt((diff.transpose() * cov * diff)(0)) / dist;
+        double directionalVar = (dist > 1e-6) ? 
+            (diff.normalized().transpose() * cov * diff.normalized()) :
+            cov.eigenvalues().real().maxCoeff();
+        double sigma = std::sqrt(directionalVar);
         double beta = std::sqrt(2) * erfcinv(2 * (1 - psafe_));
-        return dist > obs.radius + beta * sigma;
+        return dist > obs.getRadius() + beta * sigma;
     }
 };
+
+// Helper function to write obstacle states at different time points
+void writeObstacleTrajectory(const std::vector<DynamicObstacle>& dynObstacles, 
+                           double maxTime, double timeStep) {
+    std::ofstream trajFile("obstacle_trajectory.txt");
+    
+    for (double t = 0; t <= maxTime; t += timeStep) {
+        for (size_t i = 0; i < dynObstacles.size(); ++i) {
+            Eigen::Vector2d pos = dynObstacles[i].getPositionAtTime(t);
+            double radius = dynObstacles[i].getRadius();
+            
+            trajFile << t << " " << i << " " 
+                    << pos[0] << " " << pos[1] << " " 
+                    << radius << "\n";
+        }
+    }
+}
 
 int main(int argc, char **argv)
 {
@@ -183,7 +244,7 @@ int main(int argc, char **argv)
 
     // 2) Create SpaceInformation & CCRRT planner
     auto si      = std::make_shared<oc::SpaceInformation>(space, cspace);
-    auto planner = std::make_shared<CCRRT>(si, /*psafe=*/0.99);
+    auto planner = std::make_shared<CCRRT>(si, /*psafe=*/0.999);
 
     // 3) Use CCRRT::propagate so we track covariance
     si->setStatePropagator(
@@ -192,15 +253,35 @@ int main(int argc, char **argv)
             planner->propagate(start, ctrl, dt, result);
         });
 
-    // 4) Static obstacles & write obstacles.txt
-    obstacles.push_back({{ 5.0,  5.0}, 1.0});
-    obstacles.push_back({{-3.0,  2.0}, 1.5});
+    // 4) Set up obstacles
+    // Static obstacle (the square at (4,4))
+    staticObstacles.push_back(Obstacle(4.0, 4.0, 1.0));
+    
+    // Convert the rectangular obstacle to dynamic
+    // Initial position: (-4.0, 1.0)
+    // Final position: (4.0, 1.0) - moves to the right
+    // Velocity: Moving right at 0.5 units per second
+    dynamicObstacles.push_back(DynamicObstacle(
+        Eigen::Vector2d(-4.0, 1.0),  // Initial center
+        1.5,                         // Radius
+        Eigen::Vector2d(0.15, 0.0),  // Velocity
+        Eigen::Vector2d(4.0, 1.0)    // Final position
+    ));
+
+    // Write obstacle definitions to file for visualization
     {
         std::ofstream f("obstacles.txt");
-        for (auto &obs : obstacles)
-            f << obs.center[0]-obs.radius << ","
-              << obs.center[1]-obs.radius << ","
-              << 2*obs.radius << "," << 2*obs.radius << "\n";
+        // Static obstacles
+        for (auto &obs : staticObstacles)
+            f << obs.getX()-obs.getRadius() << ","
+              << obs.getY()-obs.getRadius() << ","
+              << 2*obs.getRadius() << "," << 2*obs.getRadius() << "\n";
+              
+        // Initial position of dynamic obstacles
+        for (auto &obs : dynamicObstacles)
+            f << obs.getX()-obs.getRadius() << ","
+              << obs.getY()-obs.getRadius() << ","
+              << 2*obs.getRadius() << "," << 2*obs.getRadius() << " dynamic\n";
     }
 
     // 5) Start / goal
@@ -215,11 +296,18 @@ int main(int argc, char **argv)
     // 7) Collision + chance‐constraint checker
     si->setStateValidityChecker(
         std::make_shared<ChanceConstraintStateValidityChecker>(
-            si, /*psafe=*/0.99, planner->getStateUncertainty()));
+            si, /*psafe=*/0.999, planner->getStateUncertainty()));
 
     // 8) Motion validator
-    auto mv = std::make_shared<CCRRTMotionValidator>(si, /*psafe=*/0.99);
-    mv->setObstacles(obstacles);
+    auto mv = std::make_shared<CCRRTMotionValidator>(si, /*psafe=*/0.999);
+    // Convert dynamic obstacles to static for motion validator
+    // This is ok since motion validator works with small segments
+    std::vector<Obstacle> allObsForValidator = staticObstacles;
+    for (const auto& dynObs : dynamicObstacles) {
+        Eigen::Vector2d pos = dynObs.getPositionAtTime(0);
+        allObsForValidator.push_back(Obstacle(pos[0], pos[1], dynObs.getRadius()));
+    }
+    mv->setObstacles(allObsForValidator);
     si->setMotionValidator(mv);
 
     // 9) Tuning
@@ -236,6 +324,9 @@ int main(int argc, char **argv)
         std::cout << "No solution found\n";
         return 0;
     }
+
+    // Write the obstacle trajectory for visualization
+    writeObstacleTrajectory(dynamicObstacles, planner->getCurrentTime(), 0.1);
 
     //
     // --- Write out the *smoothed* solution path
@@ -279,6 +370,26 @@ int main(int argc, char **argv)
         }
         std::cout << "[INFO] Covariances written to covariances.txt\n";
     }
+    
+    // Write time information for each state in the solution path
+    {
+        std::ofstream timeFile("state_times.txt");
+        auto raw = ss.getSolutionPath().asGeometric();
+        std::size_t N = raw.getStateCount();
+        
+        auto *uncert = planner->getStateUncertainty();
+        for (std::size_t i = 0; i < N; ++i) {
+            const ob::State *s = raw.getState(i);
+            auto it = uncert->find(s);
+            if (it != uncert->end()) {
+                auto *st = s->as<ob::RealVectorStateSpace::StateType>();
+                timeFile << st->values[0] << " " << st->values[1] << " " 
+                         << it->second.timestamp << "\n";
+            }
+        }
+        std::cout << "[INFO] State times written to state_times.txt\n";
+    }
+    
     //
     // --- Dump the entire RRT search tree (all tried edges)
     //

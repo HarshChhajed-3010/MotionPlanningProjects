@@ -657,7 +657,7 @@ CMakeFiles/CCRRT.dir/CCRRT.cpp.o: /code/CCRRT.cpp \
  /usr/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
  /code/MotionValidator.h \
  /usr/local/include/ompl-1.6/ompl/base/spaces/RealVectorStateSpace.h \
- /usr/include/c++/11/fstream \
+ /code/Obstacles.h /usr/include/c++/11/fstream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc
