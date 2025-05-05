@@ -39,13 +39,26 @@ def read_obstacles(file_path):
             if len(parts) < 4:
                 continue
             try:
-                x, y, w = map(float, parts[:3])
-                last_part = parts[3].split()
-                h = float(last_part[0])
-                if len(last_part) > 1 and last_part[1] == "dynamic":
-                    dynamic_obstacles.append((x, y, w, h))
+                # Static circle: x, y, r, "circle"
+                if parts[3].strip() == "circle":
+                    x = float(parts[0])
+                    y = float(parts[1])
+                    r = float(parts[2])
+                    static_obstacles.append(('circle', x, y, r))
+                # Dynamic rectangle: x, y, w, h dynamic
+                elif "dynamic" in parts[3]:
+                    x = float(parts[0])
+                    y = float(parts[1])
+                    w = float(parts[2])
+                    h = float(parts[3].split()[0])
+                    dynamic_obstacles.append(('rect', x, y, w, h))
+                # Fallback: treat as rectangle (legacy)
                 else:
-                    static_obstacles.append((x, y, w, h))
+                    x = float(parts[0])
+                    y = float(parts[1])
+                    w = float(parts[2])
+                    h = float(parts[3])
+                    static_obstacles.append(('rect', x, y, w, h))
             except ValueError:
                 continue
     return static_obstacles, dynamic_obstacles
@@ -114,17 +127,26 @@ def animate_car_path(obstacles, path, covariances, trajectory_file=None, save_vi
 
     # Draw static obstacles
     static_patches = []
-    for x, y, w, h in static_obstacles:
-        rect = patches.Rectangle((x, y), w, h, linewidth=1, edgecolor='black', facecolor='gray')
-        static_patches.append(rect)
-        ax.add_patch(rect)
+    for obst in static_obstacles:
+        if obst[0] == 'circle':
+            _, x, y, r = obst
+            circ = patches.Circle((x, y), r, linewidth=1, edgecolor='black', facecolor='gray', alpha=0.7)
+            static_patches.append(circ)
+            ax.add_patch(circ)
+        elif obst[0] == 'rect':
+            _, x, y, w, h = obst
+            rect = patches.Rectangle((x, y), w, h, linewidth=1, edgecolor='black', facecolor='gray', alpha=0.7)
+            static_patches.append(rect)
+            ax.add_patch(rect)
 
-    # Initialize dynamic obstacles
+    # Initialize dynamic obstacles (rectangles)
     dynamic_patches = []
-    for i, (x, y, w, h) in enumerate(dynamic_obstacles):
-        rect = patches.Rectangle((x, y), w, h, linewidth=1, edgecolor='red', facecolor='pink')
-        dynamic_patches.append(rect)
-        ax.add_patch(rect)
+    for i, obst in enumerate(dynamic_obstacles):
+        if obst[0] == 'rect':
+            _, x, y, w, h = obst
+            rect = patches.Rectangle((x, y), w, h, linewidth=1, edgecolor='red', facecolor='pink')
+            dynamic_patches.append(rect)
+            ax.add_patch(rect)
 
     # Draw RRT tree
     for (x1, y1), (x2, y2) in read_tree("rrt_tree.txt"):
@@ -144,10 +166,33 @@ def animate_car_path(obstacles, path, covariances, trajectory_file=None, save_vi
 
     # --- FIX: Set fixed axis limits so visualization does not scale with goal ---
     # Compute global min/max for all path and obstacles
-    all_x = xs + [x for x, _, w, _ in static_obstacles] + [x for x, _, w, _ in dynamic_obstacles]
-    all_y = ys + [y for _, y, _, h in static_obstacles] + [y for _, y, _, h in dynamic_obstacles]
-    all_w = [w for _, _, w, _ in static_obstacles] + [w for _, _, w, _ in dynamic_obstacles]
-    all_h = [h for _, _, _, h in static_obstacles] + [h for _, _, _, h in dynamic_obstacles]
+
+    # Gather all x, y, w, h for both circle and rect obstacles
+    all_x = xs[:]
+    all_y = ys[:]
+    all_w = []
+    all_h = []
+
+    for obst in static_obstacles:
+        if obst[0] == 'circle':
+            _, x, y, r = obst
+            all_x.append(x)
+            all_y.append(y)
+            all_w.append(r)
+            all_h.append(r)
+        elif obst[0] == 'rect':
+            _, x, y, w, h = obst
+            all_x.append(x)
+            all_y.append(y)
+            all_w.append(w)
+            all_h.append(h)
+    for obst in dynamic_obstacles:
+        if obst[0] == 'rect':
+            _, x, y, w, h = obst
+            all_x.append(x)
+            all_y.append(y)
+            all_w.append(w)
+            all_h.append(h)
 
     min_x = min(all_x) - max(all_w, default=0) - 1
     max_x = max(all_x) + max(all_w, default=0) + 1

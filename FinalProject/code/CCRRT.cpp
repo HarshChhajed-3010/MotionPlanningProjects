@@ -509,6 +509,7 @@ int main(int argc, char **argv)
     // Static obstacle (the square at (4,4))
     staticObstacles.push_back(Obstacle(4.0, 4.0, 1.0));
     
+    
     // Convert the rectangular obstacle to dynamic
     // Initial position: (-4.0, 1.0)
     // Final position: (4.0, 1.0) - moves to the right
@@ -545,16 +546,16 @@ int main(int argc, char **argv)
     // Write obstacle definitions to file for visualization
     {
         std::ofstream f("obstacles.txt");
-        // Static obstacles
+        // Static obstacles as circles: center_x, center_y, radius, "circle"
         for (auto &obs : staticObstacles)
-            f << obs.getX()-obs.getRadius() << ","
-              << obs.getY()-obs.getRadius() << ","
-              << 2*obs.getRadius() << "," << 2*obs.getRadius() << "\n";
+            f << obs.getX() << ","    // center x
+              << obs.getY() << ","    // center y
+              << obs.getRadius() << ",circle\n";
               
-        // Initial position of dynamic obstacles
+        // Initial position of dynamic obstacles (keep as before)
         for (auto &obs : dynamicObstacles)
-            f << obs.getX()-obs.getRadius() << ","
-              << obs.getY()-obs.getRadius() << ","
+            f << obs.getX()-obs.getRadius() << "," // left
+              << obs.getY()-obs.getRadius() << "," // top
               << 2*obs.getRadius() << "," << 2*obs.getRadius() << " dynamic\n";
     }
 
