@@ -1,3 +1,19 @@
+// =======================================================================================
+// MotionValidator.h
+// Header for motion validation in Chance-Constrained RRT (CCRRT).
+// Defines:
+//   - StateKey: Helper for identifying states by position.
+//   - CCRRTDetail::StateWithCovariance: Stores mean, covariance, and timestamp.
+//   - UncertaintyManager: Propagates and stores uncertainty for each state.
+//   - CCRRTMotionValidator: Checks if a motion is valid, considering:
+//         1. Static obstacles (fixed in space)
+//         2. Dynamic obstacles (move over time)
+//         3. Chance constraints (probabilistic collision using uncertainty)
+//
+// State: 2D position (x, y)
+// Control: 2D velocity (vx, vy)
+// =======================================================================================
+
 #ifndef MOTION_VALIDATOR_H
 #define MOTION_VALIDATOR_H
 

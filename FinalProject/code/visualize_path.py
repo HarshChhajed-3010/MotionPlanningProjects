@@ -1,4 +1,26 @@
 #!/usr/bin/env python3
+# =======================================================================================
+# visualize_path.py
+# Visualizes the solution path, obstacles, and uncertainty ellipses for the CCRRT planner.
+#
+# Features:
+# - Reads static and dynamic obstacles from file (obstacles.txt)
+# - Reads planned path (solution_path.txt), RRT tree (rrt_tree.txt), and covariances (covariances.txt)
+# - Animates the robot's path, showing uncertainty as an ellipse at each step
+# - Animates dynamic obstacles using their trajectory (obstacle_trajectory.txt)
+# - Supports saving the animation as a video (MP4) or displaying interactively
+#
+# File formats:
+# - Obstacles: x, y, w, h[, dynamic]
+# - Path: x, y, theta, v (theta/v may be unused)
+# - Covariances: 2x2 matrix per line (flattened)
+# - RRT tree: x1 y1 t1 x2 y2 t2 per edge
+# - Obstacle trajectory: t obs_id x y r per line
+#
+# This script helps visualize how the CCRRT algorithm handles static/dynamic obstacles
+# and propagates uncertainty (chance constraints) along the path.
+# =======================================================================================
+
 import os
 import sys
 import argparse
@@ -35,7 +57,8 @@ def read_path(file_path):
             parts = line.split()
             if len(parts) < 4:
                 continue
-            x, y, theta, v = map(float, parts[:4])
+            x, y, t, v = map(float, parts[:4])
+            theta = 0.0  # Always set orientation to 0
             path.append((x, y, theta, v))
     return path
 
@@ -52,7 +75,13 @@ def read_tree(file_path):
     segs = []
     with open(file_path) as f:
         for line in f:
-            x1, y1, x2, y2 = map(float, line.split())
+            parts = line.split()
+            if len(parts) == 4:
+                x1, y1, x2, y2 = map(float, parts)
+            elif len(parts) == 6:
+                x1, y1, _, x2, y2, _ = map(float, parts)
+            else:
+                continue
             segs.append(((x1, y1), (x2, y2)))
     return segs
 

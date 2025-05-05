@@ -1,4 +1,18 @@
+// =======================================================================================
 // MotionValidator.cpp
+// Implements motion validation for Chance-Constrained RRT (CCRRT).
+// This file provides:
+//   - UncertaintyManager: Propagates and stores state uncertainty (mean/covariance/timestamp)
+//   - CCRRTMotionValidator: Checks if a motion (edge) between two states is valid
+//     considering static obstacles, dynamic obstacles, and chance constraints.
+//
+// Key Concepts:
+// - Each state can have associated uncertainty (mean, covariance, timestamp).
+// - Static obstacles: Fixed in space (collision checked at all times).
+// - Dynamic obstacles: Move over time (collision checked at the correct time).
+// - Chance constraints: Probabilistic collision avoidance using state uncertainty.
+// =======================================================================================
+
 #include "MotionValidator.h"
 #include <ompl/control/SpaceInformation.h>
 #include <cmath>
@@ -151,24 +165,18 @@ bool CCRRTMotionValidator::checkMotion(const ob::State* s1, const ob::State* s2)
         const auto *st = test->as<ob::RealVectorStateSpace::StateType>();
         Eigen::Vector2d stateVec(st->values[0], st->values[1]);
 
-        // --- FIX: Check dynamic obstacles at correct time for each interpolated state ---
+        // --- FIX: Always use nearest timestamp for dynamic obstacle checks ---
         double t = 0.0;
         if (stateUncertainty_) {
             StateKey key = StateKey::fromState(test);
-            auto it = stateUncertainty_->find(key);
-            if (it != stateUncertainty_->end()) {
-                t = it->second.timestamp;
-            } else {
-                // Find nearest uncertainty if exact not found
-                double minDist = std::numeric_limits<double>::max();
-                for (const auto& pair : *stateUncertainty_) {
-                    double dx = key.x - pair.first.x;
-                    double dy = key.y - pair.first.y;
-                    double d = dx*dx + dy*dy;
-                    if (d < minDist) {
-                        minDist = d;
-                        t = pair.second.timestamp;
-                    }
+            double minDist = std::numeric_limits<double>::max();
+            for (const auto& pair : *stateUncertainty_) {
+                double dx = key.x - pair.first.x;
+                double dy = key.y - pair.first.y;
+                double d = dx*dx + dy*dy;
+                if (d < minDist) {
+                    minDist = d;
+                    t = pair.second.timestamp;
                 }
             }
         }
@@ -202,20 +210,14 @@ bool CCRRTMotionValidator::checkMotion(const ob::State* s1, const ob::State* s2)
         if (stateUncertainty_) {
             StateKey key = StateKey::fromState(test);
             const CCRRTDetail::StateWithCovariance* unc = nullptr;
-            auto it = stateUncertainty_->find(key);
-            if (it != stateUncertainty_->end()) {
-                unc = &it->second;
-            } else {
-                // Use nearest uncertainty if exact not found
-                double minDist = std::numeric_limits<double>::max();
-                for (const auto& pair : *stateUncertainty_) {
-                    double dx = key.x - pair.first.x;
-                    double dy = key.y - pair.first.y;
-                    double d = dx*dx + dy*dy;
-                    if (d < minDist) {
-                        minDist = d;
-                        unc = &pair.second;
-                    }
+            double minDist = std::numeric_limits<double>::max();
+            for (const auto& pair : *stateUncertainty_) {
+                double dx = key.x - pair.first.x;
+                double dy = key.y - pair.first.y;
+                double d = dx*dx + dy*dy;
+                if (d < minDist) {
+                    minDist = d;
+                    unc = &pair.second;
                 }
             }
             if (unc) {
